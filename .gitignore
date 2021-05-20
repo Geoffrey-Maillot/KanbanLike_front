@@ -5,3 +5,10 @@ dist/
 Thumbs.db
 
 yarn-error.log
+
+# front-end mentor 
+*.sketch
+*.fig
+*.xd
+.DS_Store
+.prettierignore

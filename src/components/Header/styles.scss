@@ -1,0 +1,51 @@
+@use 'src/styles/vars';
+
+.header {
+  width: 100%;
+  height: 250px;
+  padding: 60px 20px 0 20px;
+  color: vars.$LightGrayishBlue;
+
+  &_content {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      font-size: 2rem;
+      font-weight: vars.$bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5rem;
+    }
+
+    &-img {
+      width: 27px;
+      height: 27px;
+    }
+  }
+}
+
+.header-dark {
+  background: url('src/assets/img/bg-mobile-dark.jpg') center center / cover
+    no-repeat;
+}
+
+.header-light {
+  background: url('src/assets/img/bg-mobile-light.jpg') center center / cover
+    no-repeat;
+}
+
+@media screen and (min-width: 800px) {
+  .header-dark {
+    background: url('src/assets/img/bg-desktop-dark.jpg') center center / cover
+      no-repeat;
+  }
+
+  .header-light {
+    background: url('src/assets/img/bg-desktop-light.jpg') center center / cover
+      no-repeat;
+  }
+}

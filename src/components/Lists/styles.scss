@@ -1,0 +1,211 @@
+@use 'src/styles/vars';
+
+.lists {
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex: none;
+
+  .list {
+    width: 100%;
+    max-width: 320px;
+    margin-right: 20px;
+
+    &_input {
+      width: 100%;
+      border: none;
+      outline: none;
+      line-height: 2.7rem;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      padding-left: 50px;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    &_input::placeholder {
+      color: vars.$DarkGrayishBlue;
+    }
+
+    &_input-span {
+      position: relative;
+    }
+
+    &_input-span::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid vars.$LightGrayishBlue;
+      position: absolute;
+      top: 0;
+      left: 15px;
+    }
+  }
+
+  .list_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    line-height: 2.7rem;
+    padding: 0 15px 0 15px;
+  }
+
+  .list_title-button--remove {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    background: url('src/assets/img/icon-cross.svg');
+    border: none;
+    border-radius: 50%;
+  }
+
+  .list-items {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    overflow: auto;
+    max-height: 370px;
+
+    .container-list-items {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding: 0 15px 0 15px;
+      line-height: 2.7rem;
+      border-bottom: 1px solid vars.$DarkGrayishBlue;
+
+      .list-item {
+        font-size: 16px;
+      }
+
+      .list-button--check {
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border: 1px solid vars.$LightGrayishBlue;
+        border-radius: 50%;
+        margin-right: 17px;
+      }
+
+      .list-button--remove {
+        margin-left: auto;
+        width: 20px;
+        height: 20px;
+        background: url('src/assets/img/icon-cross.svg');
+        border: none;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .list_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    line-height: 2.7rem;
+    color: vars.$DarkGrayishBlue;
+    padding: 0 15px 0 15px;
+    border-radius: 0 0 5px 5px;
+
+    &-clear {
+      border: none;
+      background-color: transparent;
+      color: vars.$DarkGrayishBlue;
+      font-family: inherit;
+      font-size: 16px;
+    }
+  }
+
+  .list_filter {
+    height: 45px;
+    padding: 0 50px 0 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inherit;
+    font-size: 16px;
+  }
+
+  .list_filter button {
+    border: none;
+    background-color: transparent;
+    color: vars.$DarkGrayishBlue;
+    font-weight: 700;
+  }
+}
+
+// Dark mode
+.list-dark {
+}
+
+.liste_title-dark {
+  background-color: vars.$VeryDarkDesaturatedBlue;
+  color: vars.$LightGrayishBlue;
+}
+.input-dark {
+  background-color: vars.$VeryDarkDesaturatedBlue;
+  color: vars.$LightGrayishBlue;
+}
+
+.container-list-items-dark {
+  background-color: vars.$VeryDarkDesaturatedBlue;
+  color: vars.$LightGrayishBlue;
+}
+
+.list-item-dark {
+}
+
+.list_footer-dark {
+  background-color: vars.$VeryDarkDesaturatedBlue;
+}
+
+.list_filter-dark {
+  background-color: vars.$VeryDarkDesaturatedBlue;
+}
+
+// Light mode
+.list-light {
+}
+.liste_title-light {
+  background-color: vars.$VeryLightGray;
+  color: vars.$VeryDarkBlue;
+}
+.input-light {
+  background-color: vars.$VeryLightGray;
+  color: vars.$VeryDarkBlue;
+}
+.container-list-items-light {
+  background-color: vars.$VeryLightGray;
+  color: vars.$VeryDarkBlue;
+}
+.list-item-light {
+}
+
+.list_footer-light {
+  background-color: vars.$VeryLightGray;
+}
+
+.list_filter-light {
+  background-color: vars.$VeryLightGray;
+}
+
+// Completed Lists
+.list-completed {
+  color: vars.$DarkGrayishBlue;
+  text-decoration: line-through;
+}
+
+.check-completed {
+  background: url('src/assets/img/icon-check.svg') no-repeat center center,
+    vars.$CheckBackground;
+}
+
+@media screen and (min-height: 800px) {
+  .list-items {
+    max-height: 600px !important;
+  }
+}

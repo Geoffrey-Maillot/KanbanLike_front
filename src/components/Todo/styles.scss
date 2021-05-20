@@ -1,0 +1,16 @@
+@use 'src/styles/vars';
+
+.todo {
+  width: 100%;
+  min-height: 100vh;
+}
+
+// Dark mode
+.todo-dark {
+  background-color: vars.$VeryDarkBlue;
+}
+
+// Light mode
+.todo-light {
+  background-color: vars.$VeryLightGrayishBlue;
+}
