@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 .content {
-  width: 100%;
+  min-width: 100%;
   min-height: calc(100vh - 140px);
   display: flex;
   justify-content: flex-start;
@@ -11,7 +11,7 @@
 
   &_input-span {
     position: relative;
-
+    flex: none;
     .content_input {
       width: 100%;
       border: none;
