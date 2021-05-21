@@ -5,7 +5,7 @@ import React from 'react';
 import Header from 'src/components/Header';
 import Content from 'src/components/Content';
 import Login from 'src/containers/Login';
-import Signup from 'src/components/Signup';
+import Signup from 'src/containers/Signup';
 
 // Import style
 import './styles.scss';

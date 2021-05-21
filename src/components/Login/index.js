@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Import style
 import './styles.scss';
 
-const Login = ({ email, password, onChange, onSubmit }) => {
+const Login = ({ email, password, onChange, onSubmit, openSignup }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     onSubmit();
@@ -23,6 +23,7 @@ const Login = ({ email, password, onChange, onSubmit }) => {
           value={email}
           name="email"
           onChange={handlerOnChange}
+          autoComplete="true"
         />
         <input
           className="login-form_input"
@@ -31,12 +32,13 @@ const Login = ({ email, password, onChange, onSubmit }) => {
           value={password}
           name="password"
           onChange={handlerOnChange}
+          autoComplete="true"
         />
         <button className="login-form_button" type="submit" onSubmit={handlerOnSubmit}>
           Connexion
         </button>
         <div className="login-form_text">Pas encore inscrit?</div>
-        <button className="login-form_button" type="button">
+        <button className="login-form_button" type="button" onClick={() => openSignup()}>
           Inscription
         </button>
       </form>
@@ -49,6 +51,7 @@ Login.propTypes = {
   password: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  openSignup: PropTypes.func.isRequired,
 };
 
 Login.defaultProps = {

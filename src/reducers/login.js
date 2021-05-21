@@ -1,5 +1,5 @@
 // Reducer recipes.js
-import { CHANGE_VALUE } from 'src/actions/login';
+import { LOGIN_CHANGE_VALUE } from 'src/actions/login';
 
 export const initialState = {
   email: '',
@@ -8,7 +8,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_VALUE:
+    case LOGIN_CHANGE_VALUE:
       return {
         ...state,
         [action.name]: action.value,

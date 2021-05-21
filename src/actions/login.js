@@ -1,15 +1,21 @@
 // actions list
-export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const LOGIN_CHANGE_VALUE = 'LOGIN_CHANGE_VALUE';
 export const SEND_LOGIN = 'SEND_LOGIN';
+export const LOGIN = 'LOGIN';
 
 // action creator
 
-export const changeValue = (name, value) => ({
-  type: CHANGE_VALUE,
+export const loginChangeValue = (name, value) => ({
+  type: LOGIN_CHANGE_VALUE,
   name,
   value,
 });
 
 export const sendLogin = () => ({
   type: SEND_LOGIN,
+});
+
+export const login = (user) => ({
+  type: LOGIN,
+  user,
 });
