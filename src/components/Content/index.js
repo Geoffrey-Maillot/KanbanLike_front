@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import Component
-import Lists from 'src/components/Lists';
+import Lists from 'src/containers/Lists';
 
 // Import styles
 import './styles.scss';

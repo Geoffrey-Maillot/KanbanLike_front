@@ -5,7 +5,7 @@ const initialState = {
   lastName: '',
   email: '',
   id: null,
-  Logged: false,
+  logged: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -18,7 +18,7 @@ export default (state = initialState, action = {}) => {
         lastName,
         email,
         id,
-        Logged: true,
+        logged: true,
       };
     }
 

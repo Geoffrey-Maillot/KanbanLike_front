@@ -1,5 +1,9 @@
 // Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// Import router
+import { Router, Switch } from 'react-router-dom';
 
 // Import component
 import Header from 'src/components/Header';
@@ -10,13 +14,16 @@ import Signup from 'src/containers/Signup';
 // Import style
 import './styles.scss';
 
-const Todo = () => (
+const Todo = ({ logged }) => (
   <div className="todo todo-dark">
     <Header />
-    {/* <Content /> */}
-    <Login />
+    {logged ? <Content /> : <Login />}
     <Signup />
   </div>
 );
+
+Todo.propTypes = {
+  logged: PropTypes.bool.isRequired,
+};
 
 export default Todo;

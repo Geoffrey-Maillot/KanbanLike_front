@@ -6,8 +6,6 @@ import { SEND_SIGNUP } from 'src/actions/signup';
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case SEND_SIGNUP:
-      console.log('passage dans le middleware');
-
       {
         const {
           firstName: first_name,

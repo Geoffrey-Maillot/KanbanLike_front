@@ -10,8 +10,6 @@ export const initialState = {
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case SIGNUP_CHANGE_VALUE:
-      console.log('Je passe dans le reducer');
-
       return {
         ...state,
         [action.name]: action.value,
