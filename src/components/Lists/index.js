@@ -12,9 +12,7 @@ const Lists = ({ fetchLists, lists }) => {
   }, []);
   return (
     <div className="lists">
-      {lists.map((list) => (
-        <List key={list.id} {...list} />
-      ))}
+      {lists.length !== 0 && lists.map((list) => <List key={list.id} {...list} />)}
     </div>
   );
 };

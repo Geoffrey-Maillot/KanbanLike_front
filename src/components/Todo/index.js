@@ -7,7 +7,7 @@ import { Router, Switch } from 'react-router-dom';
 
 // Import component
 import Header from 'src/components/Header';
-import Content from 'src/components/Content';
+import Content from 'src/containers/Content';
 import Login from 'src/containers/Login';
 import Signup from 'src/containers/Signup';
 

@@ -19,9 +19,7 @@ const List = ({ cards, name }) => (
     </div>
     {/* Card */}
     <ul className="list-items">
-      {cards.map((card) => (
-        <Card key={card.id} {...card} />
-      ))}
+      {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} />)}
     </ul>
     <div className="list_footer list_footer-dark">
       <div className="list_footer-info">
