@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import List from './List';
+import List from 'src/containers/List';
 
 // Import style
 import './styles.scss';

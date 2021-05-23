@@ -7,7 +7,7 @@ import Card from './Card';
 // Import style
 import './styles.scss';
 
-const List = ({ cards, name }) => (
+const List = ({ cards, name, id, removeList }) => (
   <div className="list list-dark">
     <span className="list_input-span">
       <input type="text" className="list_input input-dark" placeholder="Create a new todo..." />
@@ -15,7 +15,7 @@ const List = ({ cards, name }) => (
 
     <div className="list_title liste_title-dark">
       <div className="list_title  ">{name}</div>
-      <button className="list_title-button--remove" type="button" />
+      <button className="list_title-button--remove" type="button" onClick={()=> removeList(id)}/>
     </div>
     {/* Card */}
     <ul className="list-items">
@@ -46,6 +46,8 @@ const List = ({ cards, name }) => (
 
 List.propTypes = {
   name: PropTypes.string,
+  id: PropTypes.number,
+  removeList: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -55,7 +57,8 @@ List.propTypes = {
 
 List.defaultProps = {
   name: '',
-  cards: '',
+  cards: [],
+  id: null
 };
 
 export default List;

@@ -1,7 +1,8 @@
 import api from 'src/api';
 
-import { FETCH_LISTS, CREATE_NEW_LIST, saveLists, saveNewList } from 'src/actions/list';
+import { FETCH_LISTS, CREATE_NEW_LIST, REMOVE_LIST_BDD, saveLists, saveNewList, removeList } from 'src/actions/list';
 import { onLoading, offLoading } from 'src/actions/utils';
+
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -39,6 +40,13 @@ export default (store) => (next) => (action) => {
           .catch((error) => console.log(error));
       }
       return next(action);
+
+      case REMOVE_LIST_BDD: 
+        api.delete(`/list/${action.id}`)
+        .then(()=> store.dispatch(removeList(action.id)))
+        .catch((error) => console.log(error))
+
+      return next(action)
 
     default:
       return next(action);
