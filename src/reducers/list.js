@@ -1,4 +1,4 @@
-import { MAJ_LISTS, LIST_CHANGE_VALUE} from 'src/actions/list';
+import { MAJ_LISTS, LIST_CHANGE_VALUE } from 'src/actions/list';
 
 import { CARD_CHANGE_VALUE } from 'src/actions/card';
 
@@ -21,6 +21,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         inputList: '',
+        inputCard: '',
         lists: action.lists,
       };
 

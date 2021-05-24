@@ -1,14 +1,10 @@
 // actions CARD
 
-export const SAVE_NEW_CARD = 'SAVE_NEW_CARD';
 export const CREATE_NEW_CARD = 'CREATE_NEW_CARD';
 export const CARD_CHANGE_VALUE = 'CARD_CHANGE_VALUE';
+export const REMOVE_CARD = 'remove_card';
 
 // action creator
-export const saveNewCard = (newCard) => ({
-  type: SAVE_NEW_CARD,
-  newCard,
-});
 
 export const createNewCard = (id) => ({
   type: CREATE_NEW_CARD,
@@ -19,4 +15,9 @@ export const cardChangeValue = (name, value) => ({
   type: CARD_CHANGE_VALUE,
   name,
   value,
+});
+
+export const removeCard = (id) => ({
+  type: REMOVE_CARD,
+  id,
 });

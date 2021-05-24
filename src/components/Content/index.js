@@ -12,6 +12,7 @@ const Content = ({ inputList, onChange, onSubmit }) => {
     onChange(evt.target.name, evt.target.value);
   };
   const handlerOnSubmit = (evt) => {
+    evt.target[0].blur();
     evt.preventDefault();
     onSubmit();
   };

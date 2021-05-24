@@ -7,14 +7,17 @@ import Card from './Card';
 // Import style
 import './styles.scss';
 
-const List = ({ cards, name, id, removeList, inputCard, onChange, onSubmit }) => {
+const List = ({ cards, name, id, removeList, inputCard, onChange, onSubmit, removeCard }) => {
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
+    evt.target[0].blur(); // Je retire le focus de l'input
     onSubmit(id);
   };
+  // Je compte les tâches en cours
+  const itemsLeft = cards.filter((card) => card.status === 'in progress').length;
 
   return (
     <div className="list list-dark">
@@ -42,12 +45,13 @@ const List = ({ cards, name, id, removeList, inputCard, onChange, onSubmit }) =>
       </div>
       {/* Card */}
       <ul className="list-items">
-        {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} />)}
+        {cards.length !== 0 &&
+          cards.map((card) => <Card key={card.id} {...card} removeCard={removeCard} />)}
       </ul>
       <div className="list_footer list_footer-dark">
         <div className="list_footer-info">
-          <span>5 </span>
-          items left
+          <span>{itemsLeft} </span>
+          {itemsLeft > 1 ? 'items' : 'item'} left
         </div>
         <button className="list_footer-clear" type="button">
           Clear Completed
@@ -75,6 +79,7 @@ List.propTypes = {
   name: PropTypes.string,
   id: PropTypes.number,
   removeList: PropTypes.func.isRequired,
+  removeCard: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
