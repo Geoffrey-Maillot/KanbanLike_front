@@ -1,5 +1,6 @@
-import { SAVE_LISTS, LIST_CHANGE_VALUE, SAVE_NEW_LIST, REMOVE_LIST } from 'src/actions/list';
-import list from '../middlewares/list';
+import { MAJ_LISTS, LIST_CHANGE_VALUE} from 'src/actions/list';
+
+import { CARD_CHANGE_VALUE } from 'src/actions/card';
 
 const initialState = {
   inputList: '',
@@ -9,34 +10,26 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SAVE_LISTS:
-      return {
-        ...state,
-        lists: action.lists,
-      };
-
     case LIST_CHANGE_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
 
-    case SAVE_NEW_LIST:
+    case MAJ_LISTS:
+      console.log(action.lists);
       return {
         ...state,
         inputList: '',
-        lists: [...state.lists, action.newList],
+        lists: action.lists,
       };
 
-    case REMOVE_LIST:
-      {
-      const lists = state.lists.filter((list) => list.id !== action.id)
+    case CARD_CHANGE_VALUE:
       return {
-      ...state,
-      lists,
-}
-}
-    
+        ...state,
+        [action.name]: action.value,
+      };
+
     default:
       return state;
   }

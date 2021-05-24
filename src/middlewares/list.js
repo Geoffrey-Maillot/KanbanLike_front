@@ -1,8 +1,9 @@
 import api from 'src/api';
 
-import { FETCH_LISTS, CREATE_NEW_LIST, REMOVE_LIST_BDD, saveLists, saveNewList, removeList } from 'src/actions/list';
+import { FETCH_LISTS, CREATE_NEW_LIST, REMOVE_LIST_BDD, majLists } from 'src/actions/list';
 import { onLoading, offLoading } from 'src/actions/utils';
 
+import maxPosition from 'src/utils';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -14,7 +15,7 @@ export default (store) => (next) => (action) => {
           .get(`/list/${id}`)
           .then((response) => response.data)
           .then(({ lists }) => {
-            store.dispatch(saveLists(lists));
+            store.dispatch(majLists(lists));
           })
           .catch((error) => console.log(error))
           .finally(() => store.dispatch(offLoading()));
@@ -23,9 +24,11 @@ export default (store) => (next) => (action) => {
 
     case CREATE_NEW_LIST:
       {
+        // Une liste a besoin d'un name, user_id, position.
         const { inputList: name } = store.getState().list;
         const { id: user_id } = store.getState().user;
-        const position = store.getState().list.lists.length + 1;
+        const { lists } = store.getState().list;
+        const position = maxPosition(lists);
 
         api
           .post('/list', {
@@ -34,19 +37,29 @@ export default (store) => (next) => (action) => {
             user_id,
           })
           .then((response) => response.data)
-          .then(({ newList }) => {
-            store.dispatch(saveNewList(newList));
+          .then(({ lists }) => {
+            store.dispatch(majLists(lists));
           })
           .catch((error) => console.log(error));
       }
       return next(action);
 
-      case REMOVE_LIST_BDD: 
-        api.delete(`/list/${action.id}`)
-        .then(()=> store.dispatch(removeList(action.id)))
-        .catch((error) => console.log(error))
+    case REMOVE_LIST_BDD:
+      {
+        const { id: userId } = store.getState().user;
+        api
+          .delete(`/list/${action.id}`, {
+            // Lorsqu'il s'agit d'une route delete ou path, on envoie les params sous forme de data
+            data: {
+              userId,
+            },
+          })
+          .then((response) => response.data)
+          .then(({ lists }) => store.dispatch(majLists(lists)))
+          .catch((error) => console.log(error));
+      }
 
-      return next(action)
+      return next(action);
 
     default:
       return next(action);
