@@ -2,8 +2,10 @@
 export const FETCH_LISTS = 'FETCH_LISTS';
 export const MAJ_LISTS = 'SAVE_LISTS';
 export const CREATE_NEW_LIST = 'CREATE_NEW_LIST';
-export const LIST_CHANGE_VALUE = 'LIST_CHANGE_VALUE';
+export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const REMOVE_LIST_BDD = 'REMOVE_LIST_BDD';
+export const SUBMIT_PATCH_LIST = 'SEND_PATCH_LIST';
+export const OPEN_CLOSE_LIST_MODAL = 'OPEN_CLOSE_LIST_MODAL';
 
 // action creators
 export const fetchLists = () => ({
@@ -19,8 +21,8 @@ export const createNewList = () => ({
   type: CREATE_NEW_LIST,
 });
 
-export const listChangeValue = (name, value) => ({
-  type: LIST_CHANGE_VALUE,
+export const changeValue = (name, value) => ({
+  type: CHANGE_VALUE,
   name,
   value,
 });
@@ -28,4 +30,13 @@ export const listChangeValue = (name, value) => ({
 export const removeListBdd = (id) => ({
   type: REMOVE_LIST_BDD,
   id,
+});
+
+export const submitPatchList = (listId) => ({
+  type: SUBMIT_PATCH_LIST,
+  listId,
+});
+
+export const openCloseListModal = () => ({
+  type: OPEN_CLOSE_LIST_MODAL,
 });

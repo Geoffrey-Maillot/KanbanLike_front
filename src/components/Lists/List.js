@@ -3,11 +3,22 @@ import PropTypes from 'prop-types';
 
 // Import Component
 import Card from './Card';
+import ListModal from 'src/containers/ListModal';
 
 // Import style
 import './styles.scss';
 
-const List = ({ cards, name, id, removeList, inputCard, onChange, onSubmit, removeCard }) => {
+const List = ({
+  cards,
+  name,
+  id,
+  removeList,
+  inputCard,
+  onChange,
+  onSubmit,
+  removeCard,
+  openCloseListModal,
+}) => {
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
@@ -35,7 +46,14 @@ const List = ({ cards, name, id, removeList, inputCard, onChange, onSubmit, remo
       </form>
 
       <div className="list_title liste_title-dark">
-        <div className="list_title  ">{name}</div>
+        <div
+          className="list_title"
+          onClick={() => {
+            openCloseListModal();
+          }}
+        >
+          {name}
+        </div>
         <button
           className="list_title-button--remove"
           type="button"
@@ -68,11 +86,13 @@ const List = ({ cards, name, id, removeList, inputCard, onChange, onSubmit, remo
           Completed
         </button>
       </div>
+      <ListModal listId={id} />
     </div>
   );
 };
 
 List.propTypes = {
+  openCloseListModal: PropTypes.func.isRequired,
   inputCard: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -89,6 +109,7 @@ List.propTypes = {
 
 List.defaultProps = {
   inputCard: '',
+
   name: '',
   cards: [],
   id: null,

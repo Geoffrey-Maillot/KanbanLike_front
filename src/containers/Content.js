@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Content from 'src/components/Content';
-import { createNewList, listChangeValue } from 'src/actions/list';
+import { createNewList, changeValue } from 'src/actions/list';
 
 const mapStateToProps = (state) => ({
   inputList: state.list.inputList,
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: () => dispatch(createNewList()),
-  onChange: (name, value) => dispatch(listChangeValue(name, value)),
+  onChange: (name, value) => dispatch(changeValue(name, value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

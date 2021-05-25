@@ -1,16 +1,16 @@
-import { MAJ_LISTS, LIST_CHANGE_VALUE } from 'src/actions/list';
-
-import { CARD_CHANGE_VALUE } from 'src/actions/card';
+import { MAJ_LISTS, CHANGE_VALUE, OPEN_CLOSE_LIST_MODAL } from 'src/actions/list';
 
 const initialState = {
   inputList: '',
   inputCard: '',
+  inputListModal: '',
+  listModalIsOpen: false,
   lists: [],
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case LIST_CHANGE_VALUE:
+    case CHANGE_VALUE:
       return {
         ...state,
         [action.name]: action.value,
@@ -25,10 +25,11 @@ export default (state = initialState, action = {}) => {
         lists: action.lists,
       };
 
-    case CARD_CHANGE_VALUE:
+    case OPEN_CLOSE_LIST_MODAL:
       return {
         ...state,
-        [action.name]: action.value,
+        listModalIsOpen: !state.listModalIsOpen,
+        inputListModal: '',
       };
 
     default:

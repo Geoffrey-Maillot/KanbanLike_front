@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Import router
-import { Router, Switch } from 'react-router-dom';
+// import { Router, Switch } from 'react-router-dom';
 
 // Import component
 import Header from 'src/components/Header';
