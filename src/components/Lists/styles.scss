@@ -55,6 +55,7 @@
     margin-bottom: 5px;
     line-height: 2.7rem;
     padding: 0 15px 0 15px;
+    user-select: none;
   }
 
   .list_title:hover {
@@ -87,6 +88,7 @@
       .list-item {
         font-size: 16px;
         width: 100%;
+        user-select: none;
       }
       .list-item:hover {
         cursor: pointer;

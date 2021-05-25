@@ -4,6 +4,7 @@ export const CREATE_NEW_CARD = 'CREATE_NEW_CARD';
 export const REMOVE_CARD = 'remove_card';
 export const SUBMIT_PATCH_CARD = 'SUBMIT_PATCH_CARD';
 export const OPEN_CLOSE_CARD_MODAL = 'OPEN_CLOSE_CARD_MODAL';
+export const SAVE_POSITION_CARD = 'SAVE_POSITION_CARD';
 
 // action creator
 
@@ -24,4 +25,11 @@ export const submitPatchCard = (cardId) => ({
 
 export const openCloseCardModal = () => ({
   type: OPEN_CLOSE_CARD_MODAL,
+});
+
+export const savePositionCard = (listId, cardId, position) => ({
+  type: SAVE_POSITION_CARD,
+  listId,
+  cardId,
+  position,
 });

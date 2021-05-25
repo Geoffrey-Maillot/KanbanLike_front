@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
 import api from 'src/api';
 
 import {
   CREATE_NEW_CARD,
   REMOVE_CARD,
   SUBMIT_PATCH_CARD,
+  SAVE_POSITION_CARD,
   openCloseCardModal,
 } from 'src/actions/card';
 import { majLists } from 'src/actions/list';
@@ -74,6 +76,25 @@ export default (store) => (next) => (action) => {
       }
       return next(action);
 
+    case SAVE_POSITION_CARD:
+      {
+        const { id: userId } = store.getState().user;
+        const { listId: list_id, position } = action;
+        api
+          .patch(`/card/${action.cardId}`, {
+            userId,
+            list_id,
+            position,
+          })
+          .then((response) => response.data)
+          .then(({ lists }) => {
+            store.dispatch(majLists(lists));
+            // store.dispatch(openCloseCardModal());
+          })
+          .catch((error) => console.log(error));
+      }
+
+      return next(action);
     default:
       return next(action);
   }

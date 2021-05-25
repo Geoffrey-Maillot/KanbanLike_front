@@ -8,9 +8,9 @@ import CardModal from 'src/containers/CardModal';
 import './styles.scss';
 
 const Card = ({ name, id, removeCard, openCloseCardModal }) => (
-  <div className="container-list-items container-list-items-dark">
+  <div className="container-list-items container-list-items-dark" data-card-id={id}>
     <button className="list-button--check " type="button" />
-    <li className="list-item list-item-dark" onClick={()=> openCloseCardModal()}>{name}</li>
+    <li className="list-item list-item-dark" /*onClick={() => openCloseCardModal()}*/>{name}</li>
     <button className="list-button--remove" type="button" onClick={() => removeCard(id)} />
     <CardModal cardId={id} />
   </div>

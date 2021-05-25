@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+// drag and drop
+import { ReactSortable } from 'react-sortablejs';
 
 // Import Component
 import Card from './Card';
@@ -19,6 +22,7 @@ const List = ({
   removeCard,
   openCloseListModal,
   openCloseCardModal,
+  savePositionCard,
 }) => {
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
@@ -31,8 +35,26 @@ const List = ({
   // Je compte les tâches en cours
   const itemsLeft = cards.filter((card) => card.status === 'in progress').length;
 
+  // J'initialise un état des cards dans la variable listsCards
+  // Je passe setListcards à la méthode setList du composant ReactSortable.
+  // à chaque déplacement d'une carte setList passera à setListcards un nouveau tableau
+  // qui correspond à ma liste de cards réodonnées
+  const [listCards, setListCards] = useState(cards);
+
+  // ... A chaque déplacement d'une carte
+  // je boucle sur le nouveau tableau de cards
+  // onEndDrag est appellé par la méthode onDrag du composant ReactSortable
+  // onDrag est appellé chaque fois que mon élément ReactSortable a changé
+  // ( après qu'il est changé )
+  const onEndDrag = () => {
+    listCards.forEach((card, index) => {
+      const position = index + 1;
+      savePositionCard(id, card.id, position);
+    });
+  };
+
   return (
-    <div className="list list-dark">
+    <div className="list list-dark" data-list-id={id}>
       <form onSubmit={handlerOnSubmit}>
         <span className="list_input-span">
           <input
@@ -49,7 +71,7 @@ const List = ({
       <div className="list_title liste_title-dark">
         <div
           className="list_title"
-          onClick={() => {
+          onDoubleClick={() => {
             openCloseListModal();
           }}
         >
@@ -63,7 +85,17 @@ const List = ({
         />
       </div>
       {/* Card */}
-      <ul className="list-items">
+
+      <ReactSortable
+        className="list-items"
+        tag="ul"
+        list={cards}
+        animation={200}
+        draggable=".container-list-items"
+        group=".list-items"
+        onSort={onEndDrag}
+        setList={setListCards}
+      >
         {cards.length !== 0 &&
           cards.map((card) => (
             <Card
@@ -73,7 +105,8 @@ const List = ({
               openCloseCardModal={openCloseCardModal}
             />
           ))}
-      </ul>
+      </ReactSortable>
+
       <div className="list_footer list_footer-dark">
         <div className="list_footer-info">
           <span>{itemsLeft} </span>
@@ -100,6 +133,7 @@ const List = ({
 };
 
 List.propTypes = {
+  savePositionCard: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,
   openCloseCardModal: PropTypes.func.isRequired,
   inputCard: PropTypes.string,

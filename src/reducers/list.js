@@ -20,7 +20,6 @@ export default (state = initialState, action = {}) => {
       };
 
     case MAJ_LISTS:
-      console.log(action.lists);
       return {
         ...state,
         inputList: '',
