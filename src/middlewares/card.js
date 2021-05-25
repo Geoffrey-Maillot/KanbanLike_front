@@ -6,6 +6,7 @@ import {
   REMOVE_CARD,
   SUBMIT_PATCH_CARD,
   SAVE_POSITION_CARD,
+  CHECK_CARD,
   openCloseCardModal,
 } from 'src/actions/card';
 import { majLists } from 'src/actions/list';
@@ -89,12 +90,36 @@ export default (store) => (next) => (action) => {
           .then((response) => response.data)
           .then(({ lists }) => {
             store.dispatch(majLists(lists));
-            // store.dispatch(openCloseCardModal());
           })
           .catch((error) => console.log(error));
       }
-
       return next(action);
+
+    case CHECK_CARD:
+      {
+        const { id: userId } = store.getState().user;
+        let { listId: list_id, status } = action;
+        // Si une carte est marqué commme terminé, je la passe en cours,
+        // sinon c'est qu'elle est en cours, je la passe en terminé
+        if (status === 'done') {
+          status = 'in progress';
+        } else {
+          status = 'done';
+        }
+        api
+          .patch(`/card/${action.cardId}`, {
+            userId,
+            list_id,
+            status,
+          })
+          .then((response) => response.data)
+          .then(({ lists }) => {
+            store.dispatch(majLists(lists));
+          })
+          .catch((error) => console.log(error));
+      }
+      return next(action);
+
     default:
       return next(action);
   }

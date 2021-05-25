@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
 
 // Import Component
-import Card from './Card';
+import Card from 'src/containers/Card';
 import ListModal from 'src/containers/ListModal';
 
 // Import style
@@ -19,9 +19,7 @@ const List = ({
   inputCard,
   onChange,
   onSubmit,
-  removeCard,
   openCloseListModal,
-  openCloseCardModal,
   savePositionCard,
 }) => {
   const handlerOnChange = (evt) => {
@@ -96,15 +94,7 @@ const List = ({
         onSort={onEndDrag}
         setList={setListCards}
       >
-        {cards.length !== 0 &&
-          cards.map((card) => (
-            <Card
-              key={card.id}
-              {...card}
-              removeCard={removeCard}
-              openCloseCardModal={openCloseCardModal}
-            />
-          ))}
+        {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} listId={id} />)}
       </ReactSortable>
 
       <div className="list_footer list_footer-dark">
@@ -135,14 +125,12 @@ const List = ({
 List.propTypes = {
   savePositionCard: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,
-  openCloseCardModal: PropTypes.func.isRequired,
   inputCard: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   name: PropTypes.string,
   id: PropTypes.number,
   removeList: PropTypes.func.isRequired,
-  removeCard: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
