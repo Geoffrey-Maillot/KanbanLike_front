@@ -18,6 +18,7 @@ const List = ({
   onSubmit,
   removeCard,
   openCloseListModal,
+  openCloseCardModal,
 }) => {
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
@@ -64,7 +65,14 @@ const List = ({
       {/* Card */}
       <ul className="list-items">
         {cards.length !== 0 &&
-          cards.map((card) => <Card key={card.id} {...card} removeCard={removeCard} />)}
+          cards.map((card) => (
+            <Card
+              key={card.id}
+              {...card}
+              removeCard={removeCard}
+              openCloseCardModal={openCloseCardModal}
+            />
+          ))}
       </ul>
       <div className="list_footer list_footer-dark">
         <div className="list_footer-info">
@@ -93,6 +101,7 @@ const List = ({
 
 List.propTypes = {
   openCloseListModal: PropTypes.func.isRequired,
+  openCloseCardModal: PropTypes.func.isRequired,
   inputCard: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

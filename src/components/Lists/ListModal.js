@@ -14,7 +14,6 @@ const ListModal = ({
 }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
-    openCloseListModal();
     submitPatchList(listId);
   };
   const handlerOnChange = (evt) => {

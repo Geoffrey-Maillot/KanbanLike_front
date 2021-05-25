@@ -1,6 +1,11 @@
 import api from 'src/api';
 
-import { CREATE_NEW_CARD, REMOVE_CARD } from 'src/actions/card';
+import {
+  CREATE_NEW_CARD,
+  REMOVE_CARD,
+  SUBMIT_PATCH_CARD,
+  openCloseCardModal,
+} from 'src/actions/card';
 import { majLists } from 'src/actions/list';
 
 import maxPosition from 'src/utils';
@@ -48,6 +53,25 @@ export default (store) => (next) => (action) => {
           .catch((error) => console.log(error));
       }
 
+      return next(action);
+
+    case SUBMIT_PATCH_CARD:
+      {
+        const { id: userId } = store.getState().user;
+        const { inputCardModal: name } = store.getState().list;
+
+        api
+          .patch(`/card/${action.cardId}`, {
+            userId,
+            name,
+          })
+          .then((response) => response.data)
+          .then(({ lists }) => {
+            store.dispatch(majLists(lists));
+            store.dispatch(openCloseCardModal());
+          })
+          .catch((error) => console.log(error));
+      }
       return next(action);
 
     default:

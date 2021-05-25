@@ -6,6 +6,7 @@ import {
   REMOVE_LIST_BDD,
   SUBMIT_PATCH_LIST,
   majLists,
+  openCloseListModal,
 } from 'src/actions/list';
 import { onLoading, offLoading } from 'src/actions/utils';
 
@@ -67,21 +68,24 @@ export default (store) => (next) => (action) => {
 
       return next(action);
 
-    case SUBMIT_PATCH_LIST: {
-      const { id: userId } = store.getState().user;
-      const { inputListModal: name } = store.getState().list;
-      api
-        .patch(`/list/${action.listId}`, {
-          userId,
-          name,
-        })
-        .then((response) => response.data)
-        .then(({ lists }) => {
-          console.log(lists);
-          store.dispatch(majLists(lists));
-        })
-        .catch((error) => console.log(error));
-    }
+    case SUBMIT_PATCH_LIST:
+      {
+        const { id: userId } = store.getState().user;
+        const { inputListModal: name } = store.getState().list;
+
+        api
+          .patch(`/list/${action.listId}`, {
+            userId,
+            name,
+          })
+          .then((response) => response.data)
+          .then(({ lists }) => {
+            store.dispatch(majLists(lists));
+            store.dispatch(openCloseListModal());
+          })
+          .catch((error) => console.log(error));
+      }
+      return next(action);
 
     default:
       return next(action);
