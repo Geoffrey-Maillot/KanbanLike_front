@@ -10,11 +10,10 @@ const ListModal = ({
   inputListModal,
   isOpen,
   openCloseListModal,
-  listId,
 }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
-    submitPatchList(listId);
+    submitPatchList();
   };
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
@@ -46,7 +45,6 @@ const ListModal = ({
 };
 
 ListModal.propTypes = {
-  listId: PropTypes.number.isRequired,
   submitPatchList: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,

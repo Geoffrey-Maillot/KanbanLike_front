@@ -1,0 +1,24 @@
+@use 'src/styles/vars';
+
+.list_filter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 45px;
+  padding: 0 50px 0 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.list_filter button {
+  border: none;
+  background-color: transparent;
+  color: vars.$DarkGrayishBlue;
+  font-weight: 700;
+}

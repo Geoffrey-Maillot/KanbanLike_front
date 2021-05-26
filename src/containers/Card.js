@@ -6,7 +6,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   checkCard: (status, cardId, listId) => dispatch(checkCard(status, cardId, listId)),
-  openCloseCardModal: () => dispatch(openCloseCardModal()),
+  openCloseCardModal: (cardId) => dispatch(openCloseCardModal(cardId)),
   removeCard: (id) => dispatch(removeCard(id)),
 });
 

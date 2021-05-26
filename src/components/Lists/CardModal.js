@@ -10,11 +10,10 @@ const CardModal = ({
   inputCardModal,
   isOpen,
   openCloseCardModal,
-  cardId,
 }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
-    submitPatchCard(cardId);
+    submitPatchCard();
   };
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
@@ -46,7 +45,6 @@ const CardModal = ({
 };
 
 CardModal.propTypes = {
-  cardId: PropTypes.number.isRequired,
   submitPatchCard: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   openCloseCardModal: PropTypes.func.isRequired,

@@ -20,13 +20,13 @@ export const removeCard = (id) => ({
   id,
 });
 
-export const submitPatchCard = (cardId) => ({
+export const submitPatchCard = () => ({
   type: SUBMIT_PATCH_CARD,
-  cardId,
 });
 
-export const openCloseCardModal = () => ({
+export const openCloseCardModal = (cardId) => ({
   type: OPEN_CLOSE_CARD_MODAL,
+  cardId,
 });
 
 export const savePositionCard = (listId, cardId, position) => ({

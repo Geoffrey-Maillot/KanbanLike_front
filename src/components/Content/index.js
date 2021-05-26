@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // Import Component
 import Lists from 'src/containers/Lists';
+import Filter from 'src/components/Filter';
 
 // Import styles
 import './styles.scss';
@@ -32,6 +33,7 @@ const Content = ({ inputList, onChange, onSubmit }) => {
           />
         </form>
       </span>
+      <Filter />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   removeCard: (id) => dispatch(removeCard(id)),
   onSubmit: (id) => dispatch(createNewCard(id)),
   onChange: (name, value, id) => dispatch(changeValueCard(name, value, id)),
-  openCloseListModal: () => dispatch(openCloseListModal()),
+  openCloseListModal: (listId) => dispatch(openCloseListModal(listId)),
   savePositionCard: (listId, cardId, position) =>
     dispatch(savePositionCard(listId, cardId, position)),
 });

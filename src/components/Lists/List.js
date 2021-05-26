@@ -52,7 +52,7 @@ const List = ({
     });
   };
 
- // Méthode qui supprime les tâches terminées
+  // Méthode qui supprime les tâches terminées
   const clearCompleted = () => {
     cards.forEach((card) => {
       if (card.status === 'done') {
@@ -61,10 +61,6 @@ const List = ({
     });
   };
 
-  // J'initie une variable qui reflète l'état focus ou non de l'input add Todo
-  // L'input sera modifié seulement si il est ciblé
-  const [inputIsFocus, setInputIsFocus] = useState(false)
-  
   return (
     <div className="list list-dark" data-list-id={id}>
       <form onSubmit={handlerOnSubmit}>
@@ -76,9 +72,6 @@ const List = ({
             name="inputCard"
             value={inputCard}
             onChange={handlerOnChange}
-            onFocus={()=> setInputIsFocus(true)}
-            onBlur={()=> setInputIsFocus(false)}
-
           />
         </span>
       </form>
@@ -87,7 +80,7 @@ const List = ({
         <div
           className="list_title"
           onDoubleClick={() => {
-            openCloseListModal();
+            openCloseListModal(id);
           }}
         >
           {name}
@@ -123,18 +116,7 @@ const List = ({
           Clear Completed
         </button>
       </div>
-      <div className="list_filter list_filter-dark">
-        <button className="list_footer-all" type="button">
-          All
-        </button>
-        <button className="list_footer-Active" type="button">
-          Active
-        </button>
-        <button className="list_footer-Completed" type="button">
-          Completed
-        </button>
-      </div>
-      <ListModal listId={id} />
+      <ListModal />
     </div>
   );
 };

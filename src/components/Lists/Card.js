@@ -26,12 +26,12 @@ const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkC
         className={classNames('list-item list-item-dark', {
           'list-completed': status === 'done',
         })}
-        onDoubleClick={() => openCloseCardModal()}
+        onDoubleClick={() => openCloseCardModal(id)}
       >
         {name}
       </li>
       <button className="list-button--remove" type="button" onClick={() => removeCard(id)} />
-      <CardModal cardId={id} />
+      <CardModal />
     </div>
   );
 };
