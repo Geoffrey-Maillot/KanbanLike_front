@@ -71,8 +71,7 @@ export default (store) => (next) => (action) => {
     case SUBMIT_PATCH_LIST:
       {
         const { id: userId } = store.getState().user;
-        const name = store.getState().list;
-
+        const { inputListModal: name } = store.getState().list;
         api
           .patch(`/list/${action.listId}`, {
             userId,

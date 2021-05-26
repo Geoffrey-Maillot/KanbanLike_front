@@ -19,13 +19,13 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
 
-case CHANGE_VALUE_CARD:
+    case CHANGE_VALUE_CARD:
       return {
         ...state,
         inputCard: {
-  ...state.inputCard,
- [ action.id]: action.value,
-},
+          ...state.inputCard,
+          [action.id]: action.value,
+        },
       };
 
     case MAJ_LISTS:

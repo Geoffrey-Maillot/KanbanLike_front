@@ -17,8 +17,11 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case CREATE_NEW_CARD:
       {
+        // Il me faut l'id du user pour récupérer la nouvelle list
         const { id: userId } = store.getState().user;
-        const { inputCard: name } = store.getState().list;
+        // le nom de la carte que l'on récupère avec l'id de la liste
+        const name = store.getState().list.inputCard[action.id];
+        // Je formate l'id de la carte pour l'envoyer au back
         const list_id = action.id;
         // Pour déterminer la position, je trouve mon tableau de card en fonction de la list,
         const { lists } = store.getState().list;

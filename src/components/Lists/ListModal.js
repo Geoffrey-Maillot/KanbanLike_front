@@ -12,6 +12,7 @@ const ListModal = ({
   openCloseListModal,
   listId,
 }) => {
+  console.log(listId);
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     submitPatchList(listId);
