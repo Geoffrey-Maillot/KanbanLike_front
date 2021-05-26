@@ -16,6 +16,7 @@ const List = ({
   name,
   id,
   removeList,
+  removeCard,
   inputCard,
   onChange,
   onSubmit,
@@ -48,6 +49,14 @@ const List = ({
     listCards.forEach((card, index) => {
       const position = index + 1;
       savePositionCard(id, card.id, position);
+    });
+  };
+
+  const clearCompleted = () => {
+    cards.forEach((card) => {
+      if (card.status === 'done') {
+        removeCard(card.id);
+      }
     });
   };
 
@@ -102,7 +111,7 @@ const List = ({
           <span>{itemsLeft} </span>
           {itemsLeft > 1 ? 'items' : 'item'} left
         </div>
-        <button className="list_footer-clear" type="button">
+        <button className="list_footer-clear" type="button" onClick={clearCompleted}>
           Clear Completed
         </button>
       </div>
@@ -131,6 +140,7 @@ List.propTypes = {
   name: PropTypes.string,
   id: PropTypes.number,
   removeList: PropTypes.func.isRequired,
+  removeCard: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

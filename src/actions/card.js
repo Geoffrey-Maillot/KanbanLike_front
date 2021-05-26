@@ -39,5 +39,5 @@ export const checkCard = (status, cardId, listId) => ({
   type: CHECK_CARD,
   status,
   cardId,
-  listId
+  listId,
 });
