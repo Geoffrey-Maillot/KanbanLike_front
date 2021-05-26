@@ -24,7 +24,7 @@ const List = ({
   savePositionCard,
 }) => {
   const handlerOnChange = (evt) => {
-    onChange(evt.target.name, evt.target.value);
+    onChange(evt.target.name, evt.target.value, id);
   };
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
@@ -52,6 +52,7 @@ const List = ({
     });
   };
 
+ // Méthode qui supprime les tâches terminées
   const clearCompleted = () => {
     cards.forEach((card) => {
       if (card.status === 'done') {
@@ -60,6 +61,10 @@ const List = ({
     });
   };
 
+  // J'initie une variable qui reflète l'état focus ou non de l'input add Todo
+  // L'input sera modifié seulement si il est ciblé
+  const [inputIsFocus, setInputIsFocus] = useState(false)
+  
   return (
     <div className="list list-dark" data-list-id={id}>
       <form onSubmit={handlerOnSubmit}>
@@ -71,6 +76,9 @@ const List = ({
             name="inputCard"
             value={inputCard}
             onChange={handlerOnChange}
+            onFocus={()=> setInputIsFocus(true)}
+            onBlur={()=> setInputIsFocus(false)}
+
           />
         </span>
       </form>

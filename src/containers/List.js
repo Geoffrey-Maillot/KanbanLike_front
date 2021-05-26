@@ -1,18 +1,18 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { connect } from 'react-redux';
 import List from 'src/components/Lists/List';
-import { removeListBdd, openCloseListModal, changeValue } from 'src/actions/list';
-import { createNewCard, savePositionCard, removeCard } from 'src/actions/card';
+import { removeListBdd, openCloseListModal } from 'src/actions/list';
+import { createNewCard, savePositionCard, removeCard, changeValueCard } from 'src/actions/card';
 
-const mapStateToProps = (state) => ({
-  inputCard: state.list.inputCard,
+const mapStateToProps = (state, ownProps) => ({
+  inputCard: state.list.inputCard[ownProps.id],
 });
 
 const mapDispatchToProps = (dispatch) => ({
   removeList: (id) => dispatch(removeListBdd(id)),
   removeCard: (id) => dispatch(removeCard(id)),
   onSubmit: (id) => dispatch(createNewCard(id)),
-  onChange: (name, value) => dispatch(changeValue(name, value)),
+  onChange: (name, value, id) => dispatch(changeValueCard(name, value, id)),
   openCloseListModal: () => dispatch(openCloseListModal()),
   savePositionCard: (listId, cardId, position) =>
     dispatch(savePositionCard(listId, cardId, position)),

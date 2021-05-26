@@ -1,9 +1,9 @@
 import { MAJ_LISTS, CHANGE_VALUE, OPEN_CLOSE_LIST_MODAL } from 'src/actions/list';
-import { OPEN_CLOSE_CARD_MODAL } from 'src/actions/card';
+import { OPEN_CLOSE_CARD_MODAL, CHANGE_VALUE_CARD } from 'src/actions/card';
 
 const initialState = {
   inputList: '',
-  inputCard: '',
+  inputCard: {},
   inputListModal: '',
   inputCardModal: '',
   cardModalIsOpen: false,
@@ -17,6 +17,15 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+
+case CHANGE_VALUE_CARD:
+      return {
+        ...state,
+        inputCard: {
+  ...state.inputCard,
+ [ action.id]: action.value,
+},
       };
 
     case MAJ_LISTS:
