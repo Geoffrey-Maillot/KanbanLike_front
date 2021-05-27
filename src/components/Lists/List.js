@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { HiOutlinePencil } from 'react-icons/hi';
 import { VscClose } from 'react-icons/vsc';
 
-// drag and drop
+// npm
 import { ReactSortable } from 'react-sortablejs';
 
 // Import Component
