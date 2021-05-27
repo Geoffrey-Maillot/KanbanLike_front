@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Import router
-// import { Router, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Import component
 import Header from 'src/components/Header';
@@ -17,7 +17,15 @@ import './styles.scss';
 const Todo = ({ logged }) => (
   <div className="todo todo-dark">
     <Header />
-    {logged ? <Content /> : <Login />}
+    <Switch>
+      <Route exact path="/">
+        {!logged ? <Login /> : <Content />}
+      </Route>
+      <Route path="/filter/:filter">{logged && <Content />}</Route>
+    </Switch>
+    <Route>
+      <h1>404</h1>
+    </Route>
     <Signup />
   </div>
 );

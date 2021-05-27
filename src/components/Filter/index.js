@@ -1,17 +1,18 @@
 import React from 'react';
 import './styles.scss';
+import { NavLink } from 'react-router-dom';
 
 const Filter = () => (
   <div className="list_filter list_filter-dark">
-    <button className="list_footer-all" type="button">
+    <NavLink to="/" exact className="link" activeClassName="link-active">
       All
-    </button>
-    <button className="list_footer-Active" type="button">
+    </NavLink>
+    <NavLink to="/filter/active" exact className="link" activeClassName="link-active">
       Active
-    </button>
-    <button className="list_footer-Completed" type="button">
+    </NavLink>
+    <NavLink to="/filter/completed" exact className="link" activeClassName="link-active">
       Completed
-    </button>
+    </NavLink>
   </div>
 );
 
