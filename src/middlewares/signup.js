@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 import api from 'src/api';
 
-import { SEND_SIGNUP } from 'src/actions/signup';
+import { SEND_SIGNUP, openCloseSignup } from 'src/actions/signup';
+import { openSnackBar } from 'src/actions/utils';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -20,7 +21,14 @@ export default (store) => (next) => (action) => {
             email,
             password,
           })
-          .catch((error) => console.log(error));
+          .then(() => {
+            store.dispatch(openCloseSignup());
+            store.dispatch(openSnackBar('Inscription réussi', 'success'));
+          })
+          .catch((error) => {
+            store.dispatch(openSnackBar("une erreur s'est produite, veuillez réessayer", 'error'));
+            console.log(error);
+          });
       }
       return next(action);
 

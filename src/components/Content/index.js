@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 // Import Component
 import Lists from 'src/containers/Lists';
-import Filter from 'src/containers/Filter';
+import Filter from 'src/components/Filter';
 
 // Import styles
 import './styles.scss';

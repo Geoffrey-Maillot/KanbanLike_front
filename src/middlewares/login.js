@@ -1,6 +1,7 @@
 import api from 'src/api';
 
 import { SEND_LOGIN, login } from 'src/actions/login';
+import { openSnackBar } from 'src/actions/utils';
 
 export default (store) => (next) => (action) => {
   // console.log('Passage dans le middleware', action);
@@ -16,8 +17,12 @@ export default (store) => (next) => (action) => {
           .then((response) => response.data)
           .then(({ user }) => {
             store.dispatch(login(user));
+            store.dispatch(openSnackBar('Connexion réussi', 'success'));
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            store.dispatch(openSnackBar("Une erreur s'est produite, veuillez réessayer", 'error'));
+            console.log(error);
+          });
       }
       return next(action);
 
