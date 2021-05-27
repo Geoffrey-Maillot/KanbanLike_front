@@ -48,35 +48,54 @@
 
   .list_title {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-radius: 5px;
     margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
     line-height: 2.7rem;
     padding: 0 15px 0 15px;
     user-select: none;
+    position: relative;
+    text-align: center;
   }
 
   .list_title:hover {
     cursor: pointer;
   }
 
-  .list_title-button--remove {
-    margin-left: auto;
-    width: 20px;
-    height: 20px;
-    background: url('src/assets/img/icon-cross.svg');
+  .list_title:hover .list_title-buttons {
+    display: flex;
+  }
+
+  .list_title-buttons {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    transition: all 0.3s;
+  }
+
+  .list_title-button {
+    padding: 0;
+    background: transparent;
     border: none;
-    border-radius: 50%;
+    color: vars.$DarkGrayishBlue;
+  }
+  .list_title-button:hover {
+    color: #914fb8;
   }
 
   .list-items {
     width: 100%;
     border-radius: 5px 5px 0 0;
     overflow: auto;
-    max-height: 370px;
+    max-height: calc(100vh - 350px);
 
+    .container-list-items:hover .list_title-buttons {
+      display: flex;
+    }
     .container-list-items {
       display: flex;
       justify-content: start;
@@ -84,6 +103,7 @@
       padding: 0 15px 0 15px;
       line-height: 2.7rem;
       border-bottom: 1px solid vars.$DarkGrayishBlue;
+      position: relative;
 
       .list-item {
         font-size: 16px;
@@ -178,10 +198,6 @@
   }
 }
 
-/*------------------------------------------
-              DARK/LIGHT MODE
--------------------------------------------*/
-
 // dark mode
 .list-dark {
 }
@@ -207,10 +223,6 @@
   background-color: vars.$VeryDarkDesaturatedBlue;
 }
 
-.list_filter-dark {
-  background-color: vars.$VeryDarkDesaturatedBlue;
-}
-
 // Light mode
 .list-light {
 }
@@ -233,10 +245,6 @@
   background-color: vars.$VeryLightGray;
 }
 
-.list_filter-light {
-  background-color: vars.$VeryLightGray;
-}
-
 // Completed Lists
 .list-completed {
   color: vars.$DarkGrayishBlue;
@@ -252,8 +260,8 @@
               MEDIA QUERRIES
 -------------------------------------------*/
 
-@media screen and (min-height: 800px) {
+@media screen and (max-height: 760px) {
   .list-items {
-    max-height: 600px !important;
+    max-height: calc(100vh - 286px) !important;
   }
 }

@@ -22,10 +22,10 @@ const Todo = ({ logged }) => (
         {!logged ? <Login /> : <Content />}
       </Route>
       <Route path="/filter/:filter">{logged && <Content />}</Route>
+      <Route>
+        <h1>404</h1>
+      </Route>
     </Switch>
-    <Route>
-      <h1>404</h1>
-    </Route>
     <Signup />
   </div>
 );

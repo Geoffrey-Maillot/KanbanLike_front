@@ -2,8 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Import icons
+import { HiOutlinePencil } from 'react-icons/hi';
+import { VscClose } from 'react-icons/vsc';
+
+// Import npm
 import classNames from 'classnames';
 
+// Import components
 import CardModal from 'src/containers/CardModal';
 
 // Import style
@@ -26,11 +32,28 @@ const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkC
         className={classNames('list-item list-item-dark', {
           'list-completed': status === 'done',
         })}
-        onDoubleClick={() => openCloseCardModal(id)}
       >
         {name}
       </li>
-      <button className="list-button--remove" type="button" onClick={() => removeCard(id)} />
+      <div className="list_title-buttons">
+        <button
+          className="list_title-button button--remove"
+          type="button"
+          onClick={() => removeCard(id)}
+          aria-label="remove-list"
+        >
+          <VscClose size="1.7em" />
+        </button>
+        <button
+          type="button"
+          className="list_title-button button--edit"
+          onClick={() => {
+            openCloseCardModal(id);
+          }}
+        >
+          <HiOutlinePencil size="1.2em" />
+        </button>
+      </div>
       <CardModal />
     </div>
   );

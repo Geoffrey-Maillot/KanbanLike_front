@@ -2,6 +2,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+// Import icons
+import { HiOutlinePencil } from 'react-icons/hi';
+import { VscClose } from 'react-icons/vsc';
+
 // drag and drop
 import { ReactSortable } from 'react-sortablejs';
 
@@ -78,6 +82,42 @@ const List = ({
 
   return (
     <div className="list list-dark" data-list-id={id}>
+      <div className="list_title liste_title-dark">
+        {name}
+        <div className="list_title-buttons">
+          <button
+            className="list_title-button button--remove"
+            type="button"
+            onClick={() => removeList(id)}
+            aria-label="remove-list"
+          >
+            <VscClose size="1.7em" />
+          </button>
+          <button
+            type="button"
+            className="list_title-button button--edit"
+            onClick={() => {
+              openCloseListModal(id);
+            }}
+          >
+            <HiOutlinePencil size="1.2em" />
+          </button>
+        </div>
+      </div>
+
+      <ReactSortable
+        className="list-items"
+        tag="ul"
+        list={cards}
+        animation={200}
+        draggable=".container-list-items"
+        group=".list-items"
+        onSort={onEndDrag}
+        setList={setListCards}
+      >
+        {/* Card */}
+        {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} listId={id} />)}
+      </ReactSortable>
       <form onSubmit={handlerOnSubmit}>
         <span className="list_input-span">
           <input
@@ -90,37 +130,6 @@ const List = ({
           />
         </span>
       </form>
-
-      <div className="list_title liste_title-dark">
-        <div
-          className="list_title"
-          onDoubleClick={() => {
-            openCloseListModal(id);
-          }}
-        >
-          {name}
-        </div>
-        <button
-          className="list_title-button--remove"
-          type="button"
-          onClick={() => removeList(id)}
-          aria-label="remove-list"
-        />
-      </div>
-      {/* Card */}
-
-      <ReactSortable
-        className="list-items"
-        tag="ul"
-        list={cards}
-        animation={200}
-        draggable=".container-list-items"
-        group=".list-items"
-        onSort={onEndDrag}
-        setList={setListCards}
-      >
-        {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} listId={id} />)}
-      </ReactSortable>
 
       <div className="list_footer list_footer-dark">
         <div className="list_footer-info">
