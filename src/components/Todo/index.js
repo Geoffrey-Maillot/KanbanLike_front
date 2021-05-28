@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Import router
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Import component
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Content from 'src/containers/Content';
 import Login from 'src/containers/Login';
 import Signup from 'src/containers/Signup';

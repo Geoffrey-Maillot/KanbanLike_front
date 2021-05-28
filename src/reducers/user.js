@@ -1,4 +1,4 @@
-import { LOGIN } from 'src/actions/login';
+import { LOGIN, LOGOUT } from 'src/actions/login';
 
 const initialState = {
   firstName: '',
@@ -21,6 +21,16 @@ export default (state = initialState, action = {}) => {
         logged: true,
       };
     }
+
+    case LOGOUT:
+      return {
+        ...state,
+        logged: false,
+        firstName: '',
+        lastName: '',
+        email: '',
+        id: null,
+      };
 
     default:
       return state;
