@@ -31,8 +31,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: vars.$VeryDarkDesaturatedBlue;
-  color: vars.$LightGrayishBlue;
 
   &_input {
     width: 100%;
@@ -42,11 +40,10 @@
     outline: none;
     margin: 10px;
     font-family: inherit;
+    box-shadow: vars.$Shadow;
   }
 
   &_button {
-    background-color: vars.$VeryDarkBlue;
-    color: vars.$LightGrayishBlue;
     border: none;
     outline: none;
     width: 160px;
@@ -54,6 +51,7 @@
     height: 30px;
     font-family: inherit;
     margin-top: 20px;
+    box-shadow: vars.$Shadow;
   }
   &_text {
     margin: 20px 0 10px 0;
@@ -72,8 +70,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: vars.$VeryDarkDesaturatedBlue;
-  color: vars.$LightGrayishBlue;
+  transform: translateY(95px);
 
   &_input {
     width: 100%;
@@ -83,11 +80,10 @@
     outline: none;
     margin: 10px;
     font-family: inherit;
+    box-shadow: vars.$Shadow;
   }
 
   &_button {
-    background-color: vars.$VeryDarkBlue;
-    color: vars.$LightGrayishBlue;
     border: none;
     outline: none;
     width: 160px;
@@ -95,8 +91,39 @@
     height: 30px;
     font-family: inherit;
     margin-top: 20px;
+    box-shadow: vars.$Shadow;
   }
   &_text {
     margin: 20px 0 10px 0;
   }
+}
+
+/*-------------------------------------------------- 
+                   DARK / LIGHT THEME
+---------------------------------------------------*/
+
+// dark mode
+.list-modal-form--dark,
+.card-modal-form--dark,
+.signup-form--dark {
+  background-color: vars.$VeryDarkDesaturatedBlue;
+  color: vars.$LightGrayishBlue;
+}
+
+.signup-form_button--dark {
+  background-color: vars.$VeryDarkBlue;
+  color: vars.$LightGrayishBlue;
+}
+
+// light mode
+.list-modal-form--light,
+.card-modal-form--light,
+.signup-form--light {
+  background-color: vars.$VeryLightGrayishBlue;
+  color: vars.$VeryDarkBlue;
+}
+
+.signup-form_button--dark {
+  background-color: vars.$VeryDarkBlue;
+  color: vars.$LightGrayishBlue;
 }

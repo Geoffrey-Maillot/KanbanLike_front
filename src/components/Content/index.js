@@ -37,6 +37,7 @@ const Content = ({ inputList, onChange, onSubmit, theme }) => {
             value={inputList}
             name="inputList"
             onChange={handlerOnChange}
+            required
           />
         </form>
       </span>

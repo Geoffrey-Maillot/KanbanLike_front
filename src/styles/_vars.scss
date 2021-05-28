@@ -27,6 +27,13 @@ $VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 // Hover
 $LightGrayishBlue: hsl(236, 33%, 92%);
 
+// input / button box-shadow
+$Shadow: 0 0 2px 2px
+  rgba(
+    $color: #000000,
+    $alpha: 0.15,
+  );
+
 // font
 
 $bold: 700;

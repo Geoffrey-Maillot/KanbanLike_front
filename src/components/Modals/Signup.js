@@ -4,7 +4,16 @@ import PropTypes from 'prop-types';
 // Import style
 import './styles.scss';
 
-const Signup = ({ firstName, lastName, email, password, onChange, onSubmit, openCloseSignup }) => {
+const Signup = ({
+  firstName,
+  lastName,
+  email,
+  password,
+  onChange,
+  onSubmit,
+  openCloseSignup,
+  theme,
+}) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     onSubmit();
@@ -20,7 +29,7 @@ const Signup = ({ firstName, lastName, email, password, onChange, onSubmit, open
 
   return (
     <div onClick={handlerOnClickModal} className="modal">
-      <form className="signup-form" onSubmit={handlerOnSubmit}>
+      <form className={`signup-form signup-form--${theme}`} onSubmit={handlerOnSubmit}>
         <h2 className="signup-form_title">Inscription</h2>
         <input
           className="signup-form_input"
@@ -54,7 +63,11 @@ const Signup = ({ firstName, lastName, email, password, onChange, onSubmit, open
           value={password}
           onChange={handlerOnChange}
         />
-        <button className="signup-form_button" type="submit" onSubmit={handlerOnSubmit}>
+        <button
+          className={`signup-form_button signup-form_button--${theme}`}
+          type="submit"
+          onSubmit={handlerOnSubmit}
+        >
           Connexion
         </button>
       </form>
@@ -63,6 +76,7 @@ const Signup = ({ firstName, lastName, email, password, onChange, onSubmit, open
 };
 
 Signup.propTypes = {
+  theme: PropTypes.string.isRequired,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,

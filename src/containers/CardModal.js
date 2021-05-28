@@ -5,6 +5,7 @@ import { submitPatchCard, openCloseCardModal } from 'src/actions/card';
 
 const mapStateToProps = (state) => ({
   inputCardModal: state.list.inputCardModal,
+theme: state.utils.theme,
 
   theme: state.utils.theme,
 });
