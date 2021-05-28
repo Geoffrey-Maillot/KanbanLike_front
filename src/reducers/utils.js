@@ -1,6 +1,7 @@
-import { ON_LOADING, OFF_LOADING, CLOSE_SNACKBAR, OPEN_SNACKBAR } from 'src/actions/utils';
+import { ON_LOADING, OFF_LOADING, CLOSE_SNACKBAR, OPEN_SNACKBAR, CHANGE_THEME } from 'src/actions/utils';
 
 const initialState = {
+  theme: 'dark',
   loading: false,
   snackBar: {
     open: false,
@@ -41,6 +42,12 @@ export default (state = initialState, action = {}) => {
           message: action.message,
           typeColor: action.typeColor,
         },
+      };
+
+    case CHANGE_THEME:
+      return {
+        ...state,
+        theme: action.color,
       };
     default:
       return state;

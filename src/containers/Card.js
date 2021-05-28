@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import Card from 'src/components/Lists/Card';
 import { checkCard, openCloseCardModal, removeCard } from 'src/actions/card';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  theme: state.utils.theme,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   checkCard: (status, cardId, listId) => dispatch(checkCard(status, cardId, listId)),

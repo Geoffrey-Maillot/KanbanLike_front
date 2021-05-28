@@ -6,6 +6,7 @@ import { openCloseListModal, submitPatchList, changeValue } from 'src/actions/li
 const mapStateToProps = (state) => ({
   inputListModal: state.list.inputListModal,
   isOpen: state.list.listModalIsOpen,
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

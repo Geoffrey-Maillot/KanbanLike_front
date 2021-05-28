@@ -135,6 +135,8 @@
   }
 
   .list_footer {
+    position: relative;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -142,7 +144,7 @@
     line-height: 2.7rem;
     color: vars.$DarkGrayishBlue;
     padding: 0 15px 0 15px;
-    border-radius: 0 0 5px 5px;
+    border-radius: 5px;
 
     &-clear {
       border: none;
@@ -199,8 +201,6 @@
 }
 
 // dark mode
-.list-dark {
-}
 
 .liste_title-dark {
   background-color: vars.$VeryDarkDesaturatedBlue;
@@ -214,9 +214,6 @@
 .container-list-items-dark {
   background-color: vars.$VeryDarkDesaturatedBlue;
   color: vars.$LightGrayishBlue;
-}
-
-.list-item-dark {
 }
 
 .list_footer-dark {
@@ -237,8 +234,6 @@
 .container-list-items-light {
   background-color: vars.$VeryLightGray;
   color: vars.$VeryDarkBlue;
-}
-.list-item-light {
 }
 
 .list_footer-light {

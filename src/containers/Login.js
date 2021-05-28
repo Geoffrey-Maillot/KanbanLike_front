@@ -6,6 +6,7 @@ import { openCloseSignup } from 'src/actions/signup';
 const mapStateToProps = (state) => ({
   email: state.login.email,
   password: state.login.password,
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

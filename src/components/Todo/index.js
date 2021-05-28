@@ -15,8 +15,8 @@ import SnackBar from 'src/containers/SnackBar';
 // Import style
 import './styles.scss';
 
-const Todo = ({ logged }) => (
-  <div className="todo todo-dark">
+const Todo = ({ logged, theme }) => (
+  <div className={`todo todo-${theme}`}>
     <Header />
     <Switch>
       <Route exact path="/">
@@ -39,6 +39,7 @@ const Todo = ({ logged }) => (
 
 Todo.propTypes = {
   logged: PropTypes.bool.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default Todo;

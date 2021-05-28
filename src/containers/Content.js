@@ -4,6 +4,7 @@ import { createNewList, changeValue } from 'src/actions/list';
 
 const mapStateToProps = (state) => ({
   inputList: state.list.inputList,
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

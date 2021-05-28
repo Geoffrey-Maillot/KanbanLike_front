@@ -6,6 +6,7 @@ import { createNewCard, savePositionCard, removeCard, changeValueCard } from 'sr
 
 const mapStateToProps = (state, ownProps) => ({
   inputCard: state.list.inputCard[ownProps.id],
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

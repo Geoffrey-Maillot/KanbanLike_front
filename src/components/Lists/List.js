@@ -17,6 +17,7 @@ import ListModal from 'src/containers/ListModal';
 import './styles.scss';
 
 const List = ({
+  theme,
   cards,
   name,
   id,
@@ -81,8 +82,8 @@ const List = ({
   };
 
   return (
-    <div className="list list-dark" data-list-id={id}>
-      <div className="list_title liste_title-dark">
+    <div className={`list list-${theme}`} data-list-id={id}>
+      <div className={`list_title liste_title-${theme}`}>
         {name}
         <div className="list_title-buttons">
           <button
@@ -122,7 +123,7 @@ const List = ({
         <span className="list_input-span">
           <input
             type="text"
-            className="list_input input-dark"
+            className={`list_input input-${theme}`}
             placeholder="Create a new todo..."
             name="inputCard"
             value={inputCard}
@@ -131,7 +132,7 @@ const List = ({
         </span>
       </form>
 
-      <div className="list_footer list_footer-dark">
+      <div className={`list_footer list_footer-${theme}`}>
         <div className="list_footer-info">
           <span>{itemsLeft} </span>
           {itemsLeft > 1 ? 'items' : 'item'} left
@@ -146,6 +147,7 @@ const List = ({
 };
 
 List.propTypes = {
+  theme: PropTypes.string.isRequired,
   filter: PropTypes.string,
   savePositionCard: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,

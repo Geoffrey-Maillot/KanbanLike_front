@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   email: state.signup.email,
   password: state.signup.password,
   signupIsOpen: state.signup.signupIsOpen,
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

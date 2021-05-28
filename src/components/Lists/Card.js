@@ -15,12 +15,12 @@ import CardModal from 'src/containers/CardModal';
 // Import style
 import './styles.scss';
 
-const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkCard }) => {
+const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkCard, theme }) => {
   const handlerClickCheckedButton = () => {
     checkCard(status, id, listId);
   };
   return (
-    <div className="container-list-items container-list-items-dark" data-card-id={id}>
+    <div className={`container-list-items container-list-items-${theme}`} data-card-id={id}>
       <button
         className={classNames('list-button--check', {
           'check-completed': status === 'done',
@@ -29,7 +29,7 @@ const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkC
         onClick={handlerClickCheckedButton}
       />
       <li
-        className={classNames('list-item list-item-dark', {
+        className={classNames(`list-item list-item-${theme}`, {
           'list-completed': status === 'done',
         })}
       >
@@ -60,6 +60,7 @@ const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkC
 };
 
 Card.propTypes = {
+  theme: PropTypes.string.isRequired,
   name: PropTypes.string,
   id: PropTypes.number,
   status: PropTypes.string,

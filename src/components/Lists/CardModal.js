@@ -4,13 +4,7 @@ import './styles.scss';
 
 import { Modal } from 'semantic-ui-react';
 
-const CardModal = ({
-  submitPatchCard,
-  onChange,
-  inputCardModal,
-  isOpen,
-  openCloseCardModal,
-}) => {
+const CardModal = ({ submitPatchCard, onChange, inputCardModal, isOpen, openCloseCardModal }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     submitPatchCard();
@@ -23,7 +17,7 @@ const CardModal = ({
       onClose={() => openCloseCardModal()}
       open={isOpen}
       centered
-      style={{ width: '300px', borderRadius: '10px' }}
+      style={{ width: '300px', borderRadius: '10px', backgroundColor: 'rgba(0,0,0,.1)' }}
     >
       <form className="card-modal-form" onSubmit={handlerOnSubmit}>
         <h2 className="card-modal-form_title">Modifier la carte</h2>
