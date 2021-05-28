@@ -2,15 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-import { Modal } from 'semantic-ui-react';
-
-const ListModal = ({
-  submitPatchList,
-  onChange,
-  inputListModal,
-  isOpen,
-  openCloseListModal,
-}) => {
+const ListModal = ({ submitPatchList, onChange, inputListModal, openCloseListModal }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     submitPatchList();
@@ -18,13 +10,14 @@ const ListModal = ({
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
+
+  const handlerOnClickModal = (evt) => {
+    if (evt.target.className === 'modal') {
+      openCloseListModal();
+    }
+  };
   return (
-    <Modal
-      onClose={() => openCloseListModal()}
-      open={isOpen}
-      centered
-      style={{ width: '300px', borderRadius: '10px' }}
-    >
+    <div className="modal" onClick={handlerOnClickModal}>
       <form className="list-modal-form" onSubmit={handlerOnSubmit}>
         <h2 className="list-modal-form_title">Modifier la liste</h2>
         <input
@@ -40,7 +33,7 @@ const ListModal = ({
           Sauvegarder
         </button>
       </form>
-    </Modal>
+    </div>
   );
 };
 
@@ -49,7 +42,6 @@ ListModal.propTypes = {
   onChange: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,
   inputListModal: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
 };
 
 ListModal.defaultProps = {

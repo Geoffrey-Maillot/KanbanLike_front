@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-import { Modal } from 'semantic-ui-react';
-
-const CardModal = ({ submitPatchCard, onChange, inputCardModal, isOpen, openCloseCardModal }) => {
+const CardModal = ({ submitPatchCard, onChange, inputCardModal, openCloseCardModal }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     submitPatchCard();
@@ -12,13 +10,14 @@ const CardModal = ({ submitPatchCard, onChange, inputCardModal, isOpen, openClos
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
+
+  const handlerOnClickModal = (evt) => {
+    if (evt.target.className === 'modal') {
+      openCloseCardModal();
+    }
+  };
   return (
-    <Modal
-      onClose={() => openCloseCardModal()}
-      open={isOpen}
-      centered
-      style={{ width: '300px', borderRadius: '10px', backgroundColor: 'rgba(0,0,0,.1)' }}
-    >
+    <div onClick={handlerOnClickModal} className="modal">
       <form className="card-modal-form" onSubmit={handlerOnSubmit}>
         <h2 className="card-modal-form_title">Modifier la carte</h2>
         <input
@@ -34,7 +33,7 @@ const CardModal = ({ submitPatchCard, onChange, inputCardModal, isOpen, openClos
           Sauvegarder
         </button>
       </form>
-    </Modal>
+    </div>
   );
 };
 
@@ -43,7 +42,6 @@ CardModal.propTypes = {
   onChange: PropTypes.func.isRequired,
   openCloseCardModal: PropTypes.func.isRequired,
   inputCardModal: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
 };
 
 CardModal.defaultProps = {

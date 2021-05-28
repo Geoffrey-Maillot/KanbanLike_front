@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Signup from 'src/components/Signup';
+import Signup from 'src/components/Modals/Signup';
 
 import { signupChangeValue, sendSignup, openCloseSignup } from 'src/actions/signup';
 
@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
   lastName: state.signup.lastName,
   email: state.signup.email,
   password: state.signup.password,
-  signupIsOpen: state.signup.signupIsOpen,
   theme: state.utils.theme,
 });
 

@@ -1,22 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// == Import semantic-ui
-import { Modal } from 'semantic-ui-react';
-
 // Import style
 import './styles.scss';
 
-const Signup = ({
-  firstName,
-  lastName,
-  email,
-  password,
-  onChange,
-  onSubmit,
-  openCloseSignup,
-  signupIsOpen,
-}) => {
+const Signup = ({ firstName, lastName, email, password, onChange, onSubmit, openCloseSignup }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     onSubmit();
@@ -24,13 +12,14 @@ const Signup = ({
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
+  const handlerOnClickModal = (evt) => {
+    if (evt.target.className === 'modal') {
+      openCloseSignup();
+    }
+  };
+
   return (
-    <Modal
-      onClose={() => openCloseSignup()}
-      open={signupIsOpen}
-      centered
-      style={{ width: '300px', borderRadius: '10px' }}
-    >
+    <div onClick={handlerOnClickModal} className="modal">
       <form className="signup-form" onSubmit={handlerOnSubmit}>
         <h2 className="signup-form_title">Inscription</h2>
         <input
@@ -69,7 +58,7 @@ const Signup = ({
           Connexion
         </button>
       </form>
-    </Modal>
+    </div>
   );
 };
 
@@ -81,7 +70,6 @@ Signup.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   openCloseSignup: PropTypes.func.isRequired,
-  signupIsOpen: PropTypes.bool.isRequired,
 };
 
 Signup.defaultProps = {

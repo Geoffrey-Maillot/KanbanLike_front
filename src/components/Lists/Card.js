@@ -15,7 +15,17 @@ import CardModal from 'src/containers/CardModal';
 // Import style
 import './styles.scss';
 
-const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkCard, theme }) => {
+const Card = ({
+  name,
+  id,
+  listId,
+  status,
+  removeCard,
+  openCloseCardModal,
+  checkCard,
+  theme,
+  isOpen,
+}) => {
   const handlerClickCheckedButton = () => {
     checkCard(status, id, listId);
   };
@@ -54,12 +64,12 @@ const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkC
           <HiOutlinePencil size="1.2em" />
         </button>
       </div>
-      <CardModal />
     </div>
   );
 };
 
 Card.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
   theme: PropTypes.string.isRequired,
   name: PropTypes.string,
   id: PropTypes.number,

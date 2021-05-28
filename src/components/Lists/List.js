@@ -141,7 +141,6 @@ const List = ({
           Clear Completed
         </button>
       </div>
-      <ListModal />
     </div>
   );
 };
