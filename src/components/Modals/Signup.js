@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// == Import semantic-ui
-import { Modal } from 'semantic-ui-react';
-
 // Import style
 import './styles.scss';
 
@@ -15,7 +12,7 @@ const Signup = ({
   onChange,
   onSubmit,
   openCloseSignup,
-  signupIsOpen,
+  theme,
 }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
@@ -24,14 +21,15 @@ const Signup = ({
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
+  const handlerOnClickModal = (evt) => {
+    if (evt.target.className === 'modal') {
+      openCloseSignup();
+    }
+  };
+
   return (
-    <Modal
-      onClose={() => openCloseSignup()}
-      open={signupIsOpen}
-      centered
-      style={{ width: '300px', borderRadius: '10px' }}
-    >
-      <form className="signup-form" onSubmit={handlerOnSubmit}>
+    <div onClick={handlerOnClickModal} className="modal">
+      <form className={`signup-form signup-form--${theme}`} onSubmit={handlerOnSubmit}>
         <h2 className="signup-form_title">Inscription</h2>
         <input
           className="signup-form_input"
@@ -65,15 +63,20 @@ const Signup = ({
           value={password}
           onChange={handlerOnChange}
         />
-        <button className="signup-form_button" type="submit" onSubmit={handlerOnSubmit}>
+        <button
+          className={`signup-form_button signup-form_button--${theme}`}
+          type="submit"
+          onSubmit={handlerOnSubmit}
+        >
           Connexion
         </button>
       </form>
-    </Modal>
+    </div>
   );
 };
 
 Signup.propTypes = {
+  theme: PropTypes.string.isRequired,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,
@@ -81,7 +84,6 @@ Signup.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   openCloseSignup: PropTypes.func.isRequired,
-  signupIsOpen: PropTypes.bool.isRequired,
 };
 
 Signup.defaultProps = {

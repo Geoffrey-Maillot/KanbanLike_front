@@ -1,7 +1,12 @@
+/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-// drag and drop
+// Import icons
+import { HiOutlinePencil } from 'react-icons/hi';
+import { VscClose } from 'react-icons/vsc';
+
+// npm
 import { ReactSortable } from 'react-sortablejs';
 
 // Import Component
@@ -12,6 +17,7 @@ import ListModal from 'src/containers/ListModal';
 import './styles.scss';
 
 const List = ({
+  theme,
   cards,
   name,
   id,
@@ -22,6 +28,7 @@ const List = ({
   onSubmit,
   openCloseListModal,
   savePositionCard,
+  filter, // Valeur de ma route paramétré pour filtrer les listes ( actice ou completed )
 }) => {
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value, id);
@@ -31,6 +38,19 @@ const List = ({
     evt.target[0].blur(); // Je retire le focus de l'input
     onSubmit(id);
   };
+
+  // je modifie la variable filter...
+  // pour qu'elle corresponde aux valeurs de la prorpiété "status" des cards
+  if (filter === 'completed') {
+    filter = 'done';
+  } else if (filter === 'active') {
+    filter = 'in progress';
+  }
+  // si je suis sur une route paramétré, je filtre sur les cards
+  if (filter !== '') {
+    cards = cards.filter((card) => card.status === filter);
+  }
+
   // Je compte les tâches en cours
   const itemsLeft = cards.filter((card) => card.status === 'in progress').length;
 
@@ -85,14 +105,7 @@ const List = ({
         >
           {name}
         </div>
-        <button
-          className="list_title-button--remove"
-          type="button"
-          onClick={() => removeList(id)}
-          aria-label="remove-list"
-        />
       </div>
-      {/* Card */}
 
       <ReactSortable
         className="list-items"
@@ -104,10 +117,23 @@ const List = ({
         onSort={onEndDrag}
         setList={setListCards}
       >
+        {/* Card */}
         {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} listId={id} />)}
       </ReactSortable>
+      <form onSubmit={handlerOnSubmit}>
+        <span className="list_input-span">
+          <input
+            type="text"
+            className={`list_input input-${theme}`}
+            placeholder="Create a new todo..."
+            name="inputCard"
+            value={inputCard}
+            onChange={handlerOnChange}
+          />
+        </span>
+      </form>
 
-      <div className="list_footer list_footer-dark">
+      <div className={`list_footer list_footer-${theme}`}>
         <div className="list_footer-info">
           <span>{itemsLeft} </span>
           {itemsLeft > 1 ? 'items' : 'item'} left
@@ -116,23 +142,13 @@ const List = ({
           Clear Completed
         </button>
       </div>
-      <div className="list_filter list_filter-dark">
-        <button className="list_footer-all" type="button">
-          All
-        </button>
-        <button className="list_footer-Active" type="button">
-          Active
-        </button>
-        <button className="list_footer-Completed" type="button">
-          Completed
-        </button>
-      </div>
-      <ListModal listId={id} />
     </div>
   );
 };
 
 List.propTypes = {
+  theme: PropTypes.string.isRequired,
+  filter: PropTypes.string,
   savePositionCard: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,
   inputCard: PropTypes.string,
@@ -151,7 +167,7 @@ List.propTypes = {
 
 List.defaultProps = {
   inputCard: '',
-
+  filter: '',
   name: '',
   cards: [],
   id: null,

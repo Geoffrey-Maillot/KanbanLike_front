@@ -15,44 +15,45 @@ const ListModal = ({
   console.log(listId);
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
-    submitPatchList(listId);
+    submitPatchList();
   };
   const handlerOnChange = (evt) => {
     onChange(evt.target.name, evt.target.value);
   };
+
+  const handlerOnClickModal = (evt) => {
+    if (evt.target.className === 'modal') {
+      openCloseListModal();
+    }
+  };
   return (
-    <Modal
-      onClose={() => openCloseListModal()}
-      open={isOpen}
-      centered
-      style={{ width: '300px', borderRadius: '10px' }}
-    >
-      <form className="list-modal-form" onSubmit={handlerOnSubmit}>
+    <div className="modal" onClick={handlerOnClickModal}>
+      <form className={`list-modal-form list-modal-form--${theme}`} onSubmit={handlerOnSubmit}>
         <h2 className="list-modal-form_title">Modifier la liste</h2>
         <input
-          className="list-modal-form_input"
+          className={`list-modal-form_input list-modal-form_input--${theme}`}
           type="text"
           placeholder="Modifier le nom..."
           name="inputListModal"
           value={inputListModal}
           onChange={handlerOnChange}
+          required
         />
 
         <button className="list-modal-form_button" type="submit" onSubmit={handlerOnSubmit}>
           Sauvegarder
         </button>
       </form>
-    </Modal>
+    </div>
   );
 };
 
 ListModal.propTypes = {
-  listId: PropTypes.number.isRequired,
+  theme: PropTypes.string.isRequired,
   submitPatchList: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   openCloseListModal: PropTypes.func.isRequired,
   inputListModal: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
 };
 
 ListModal.defaultProps = {

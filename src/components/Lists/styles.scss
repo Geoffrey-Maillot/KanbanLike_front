@@ -10,7 +10,7 @@
 
   .list {
     width: 100%;
-    max-width: 320px;
+    width: 280px;
     margin-right: 20px;
 
     &_input {
@@ -48,35 +48,54 @@
 
   .list_title {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-radius: 5px;
     margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
     line-height: 2.7rem;
     padding: 0 15px 0 15px;
     user-select: none;
+    position: relative;
+    text-align: center;
   }
 
   .list_title:hover {
     cursor: pointer;
   }
 
-  .list_title-button--remove {
-    margin-left: auto;
-    width: 20px;
-    height: 20px;
-    background: url('src/assets/img/icon-cross.svg');
+  .list_title:hover .list_title-buttons {
+    display: flex;
+  }
+
+  .list_title-buttons {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    transition: all 0.3s;
+  }
+
+  .list_title-button {
+    padding: 0;
+    background: transparent;
     border: none;
-    border-radius: 50%;
+    color: vars.$DarkGrayishBlue;
+  }
+  .list_title-button:hover {
+    color: #914fb8;
   }
 
   .list-items {
     width: 100%;
     border-radius: 5px 5px 0 0;
     overflow: auto;
-    max-height: 370px;
+    max-height: calc(100vh - 350px);
 
+    .container-list-items:hover .list_title-buttons {
+      display: flex;
+    }
     .container-list-items {
       display: flex;
       justify-content: start;
@@ -84,6 +103,7 @@
       padding: 0 15px 0 15px;
       line-height: 2.7rem;
       border-bottom: 1px solid vars.$DarkGrayishBlue;
+      position: relative;
 
       .list-item {
         font-size: 16px;
@@ -115,6 +135,8 @@
   }
 
   .list_footer {
+    position: relative;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,7 +144,7 @@
     line-height: 2.7rem;
     color: vars.$DarkGrayishBlue;
     padding: 0 15px 0 15px;
-    border-radius: 0 0 5px 5px;
+    border-radius: 5px;
 
     &-clear {
       border: none;
@@ -136,73 +158,13 @@
       color: #914fb8;
     }
   }
-
-  .list_filter {
-    height: 45px;
-    padding: 0 50px 0 50px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: inherit;
-    font-size: 16px;
-  }
-
-  .list_filter button {
-    border: none;
-    background-color: transparent;
-    color: vars.$DarkGrayishBlue;
-    font-weight: 700;
-  }
 }
+
 /*-------------------------------------------------- 
-                LIST-MODAL / CARD-MODAL
+                   DARK / LIGHT THEME
 ---------------------------------------------------*/
-.list-modal-form,
-.card-modal-form {
-  width: 300px;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: vars.$VeryDarkDesaturatedBlue;
-  color: vars.$LightGrayishBlue;
-
-  &_input {
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    margin: 10px;
-    font-family: inherit;
-  }
-
-  &_button {
-    background-color: vars.$VeryDarkBlue;
-    color: vars.$LightGrayishBlue;
-    border: none;
-    outline: none;
-    width: 160px;
-    border-radius: 5px;
-    height: 30px;
-    font-family: inherit;
-    margin-top: 20px;
-  }
-  &_text {
-    margin: 20px 0 10px 0;
-  }
-}
-
-/*------------------------------------------
-              DARK/LIGHT MODE
--------------------------------------------*/
 
 // dark mode
-.list-dark {
-}
 
 .liste_title-dark {
   background-color: vars.$VeryDarkDesaturatedBlue;
@@ -218,14 +180,7 @@
   color: vars.$LightGrayishBlue;
 }
 
-.list-item-dark {
-}
-
 .list_footer-dark {
-  background-color: vars.$VeryDarkDesaturatedBlue;
-}
-
-.list_filter-dark {
   background-color: vars.$VeryDarkDesaturatedBlue;
 }
 
@@ -244,14 +199,8 @@
   background-color: vars.$VeryLightGray;
   color: vars.$VeryDarkBlue;
 }
-.list-item-light {
-}
 
 .list_footer-light {
-  background-color: vars.$VeryLightGray;
-}
-
-.list_filter-light {
   background-color: vars.$VeryLightGray;
 }
 
@@ -270,8 +219,8 @@
               MEDIA QUERRIES
 -------------------------------------------*/
 
-@media screen and (min-height: 800px) {
+@media screen and (max-height: 760px) {
   .list-items {
-    max-height: 600px !important;
+    max-height: calc(100vh - 286px) !important;
   }
 }

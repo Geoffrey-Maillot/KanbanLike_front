@@ -6,6 +6,7 @@ export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const REMOVE_LIST_BDD = 'REMOVE_LIST_BDD';
 export const SUBMIT_PATCH_LIST = 'SUBMIT_PATCH_LIST';
 export const OPEN_CLOSE_LIST_MODAL = 'OPEN_CLOSE_LIST_MODAL';
+export const SAVE_POSITION_LIST = 'SAVE_POSITION_LIST';
 
 // action creators
 export const fetchLists = () => ({
@@ -32,11 +33,17 @@ export const removeListBdd = (id) => ({
   id,
 });
 
-export const submitPatchList = (listId) => ({
+export const submitPatchList = () => ({
   type: SUBMIT_PATCH_LIST,
+});
+
+export const openCloseListModal = (listId) => ({
+  type: OPEN_CLOSE_LIST_MODAL,
   listId,
 });
 
-export const openCloseListModal = () => ({
-  type: OPEN_CLOSE_LIST_MODAL,
+export const savePositionList = (listId, position) => ({
+  type: SAVE_POSITION_LIST,
+  listId,
+  position,
 });

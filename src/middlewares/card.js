@@ -64,10 +64,10 @@ export default (store) => (next) => (action) => {
     case SUBMIT_PATCH_CARD:
       {
         const { id: userId } = store.getState().user;
-        const { inputCardModal: name } = store.getState().list;
+        const { inputCardModal: name, cardId } = store.getState().list;
 
         api
-          .patch(`/card/${action.cardId}`, {
+          .patch(`/card/${cardId}`, {
             userId,
             name,
           })

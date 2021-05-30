@@ -5,6 +5,7 @@
   height: 250px;
   padding: 60px 20px 0 20px;
   color: vars.$LightGrayishBlue;
+  position: relative;
 
   &_content {
     width: 100%;
@@ -14,17 +15,39 @@
     justify-content: space-between;
     align-items: center;
 
+    &-button {
+      background: transparent;
+      border: none;
+    }
+
     &-title {
       font-size: 2rem;
       font-weight: vars.$bold;
       text-transform: uppercase;
       letter-spacing: 0.5rem;
+      color: vars.$VeryLightGray;
+    }
+
+    &-title:hover {
+      color: vars.$VeryLightGray;
     }
 
     &-img {
       width: 27px;
       height: 27px;
     }
+  }
+
+  &_logout-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: vars.$LightGrayishBlue;
+    background-color: transparent;
+    border: none;
+  }
+  &_logout-button:hover {
+    color: vars.$VeryDarkBlue;
   }
 }
 

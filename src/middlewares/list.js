@@ -5,6 +5,7 @@ import {
   CREATE_NEW_LIST,
   REMOVE_LIST_BDD,
   SUBMIT_PATCH_LIST,
+  SAVE_POSITION_LIST,
   majLists,
   openCloseListModal,
 } from 'src/actions/list';
@@ -73,7 +74,7 @@ export default (store) => (next) => (action) => {
         const { id: userId } = store.getState().user;
         const { inputListModal: name } = store.getState().list;
         api
-          .patch(`/list/${action.listId}`, {
+          .patch(`/list/${listId}`, {
             userId,
             name,
           })
@@ -81,6 +82,24 @@ export default (store) => (next) => (action) => {
           .then(({ lists }) => {
             store.dispatch(majLists(lists));
             store.dispatch(openCloseListModal());
+          })
+          .catch((error) => console.log(error));
+      }
+      return next(action);
+
+    case SAVE_POSITION_LIST:
+      {
+        const { id: userId } = store.getState().user;
+        const { listId, position } = action;
+        console.log(listId, position);
+        api
+          .patch(`/list/${listId}`, {
+            userId,
+            position,
+          })
+          .then((response) => response.data)
+          .then(({ lists }) => {
+            store.dispatch(majLists(lists));
           })
           .catch((error) => console.log(error));
       }

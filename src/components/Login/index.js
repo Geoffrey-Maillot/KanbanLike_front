@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Import style
 import './styles.scss';
 
-const Login = ({ email, password, onChange, onSubmit, openSignup }) => {
+const Login = ({ email, password, onChange, onSubmit, openSignup, theme }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     onSubmit();
@@ -14,7 +14,7 @@ const Login = ({ email, password, onChange, onSubmit, openSignup }) => {
   };
   return (
     <div className="login">
-      <form className="login-form login-form-dark" onSubmit={handlerOnSubmit}>
+      <form className={`login-form login-form-${theme}`} onSubmit={handlerOnSubmit}>
         <h2 className="login-form_title">Connexion</h2>
         <input
           className="login-form_input"
@@ -34,11 +34,19 @@ const Login = ({ email, password, onChange, onSubmit, openSignup }) => {
           onChange={handlerOnChange}
           autoComplete="true"
         />
-        <button className="login-form_button" type="submit" onSubmit={handlerOnSubmit}>
+        <button
+          className={`login-form_button login-form_button-${theme}`}
+          type="submit"
+          onSubmit={handlerOnSubmit}
+        >
           Connexion
         </button>
         <div className="login-form_text">Pas encore inscrit?</div>
-        <button className="login-form_button" type="button" onClick={() => openSignup()}>
+        <button
+          className={`login-form_button login-form_button-${theme}`}
+          type="button"
+          onClick={() => openSignup()}
+        >
           Inscription
         </button>
       </form>
@@ -47,6 +55,7 @@ const Login = ({ email, password, onChange, onSubmit, openSignup }) => {
 };
 
 Login.propTypes = {
+  theme: PropTypes.string.isRequired,
   email: PropTypes.string,
   password: PropTypes.string,
   onChange: PropTypes.func.isRequired,

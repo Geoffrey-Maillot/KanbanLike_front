@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
-import Signup from 'src/components/Signup';
+import Signup from 'src/components/Modals/Signup';
 
-import { signupChangeValue, sendSignup } from 'src/actions/signup';
-import { openCloseSignup } from 'src/actions/utils';
+import { signupChangeValue, sendSignup, openCloseSignup } from 'src/actions/signup';
 
 const mapStateToProps = (state) => ({
   firstName: state.signup.firstName,
   lastName: state.signup.lastName,
   email: state.signup.email,
   password: state.signup.password,
-  signupIsOpen: state.utils.signupIsOpen,
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

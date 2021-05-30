@@ -6,7 +6,7 @@ export const SUBMIT_PATCH_CARD = 'SUBMIT_PATCH_CARD';
 export const OPEN_CLOSE_CARD_MODAL = 'OPEN_CLOSE_CARD_MODAL';
 export const SAVE_POSITION_CARD = 'SAVE_POSITION_CARD';
 export const CHECK_CARD = 'CHECK_CARD';
-export const CHANGE_VALUE_CARD = 'CHANGE_VALUE_CARD'
+export const CHANGE_VALUE_CARD = 'CHANGE_VALUE_CARD';
 
 // action creator
 
@@ -20,13 +20,13 @@ export const removeCard = (id) => ({
   id,
 });
 
-export const submitPatchCard = (cardId) => ({
+export const submitPatchCard = () => ({
   type: SUBMIT_PATCH_CARD,
-  cardId,
 });
 
-export const openCloseCardModal = () => ({
+export const openCloseCardModal = (cardId) => ({
   type: OPEN_CLOSE_CARD_MODAL,
+  cardId,
 });
 
 export const savePositionCard = (listId, cardId, position) => ({
@@ -47,5 +47,5 @@ export const changeValueCard = (name, value, id) => ({
   type: CHANGE_VALUE_CARD,
   name,
   value,
-  id
-})
+  id,
+});

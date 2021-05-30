@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import ListModal from 'src/components/Lists/ListModal';
+import ListModal from 'src/components/Modals/ListModal';
 
 import { openCloseListModal, submitPatchList, changeValue } from 'src/actions/list';
 
 const mapStateToProps = (state) => ({
   inputListModal: state.list.inputListModal,
-  isOpen: state.list.listModalIsOpen,
+  theme: state.utils.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({
