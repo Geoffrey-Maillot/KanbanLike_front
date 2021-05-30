@@ -1,6 +1,6 @@
 import api from 'src/api';
 
-import { SEND_LOGIN, login } from 'src/actions/login';
+import { SEND_LOGIN, REHYDRATE, LOGOUT, login } from 'src/actions/login';
 import { openSnackBar } from 'src/actions/utils';
 
 export default (store) => (next) => (action) => {
@@ -15,8 +15,10 @@ export default (store) => (next) => (action) => {
             password,
           })
           .then((response) => response.data)
-          .then(({ user }) => {
-            store.dispatch(login(user));
+          .then(({ token }) => {
+            localStorage.setItem('jwtToken', token);
+            api.defaults.headers.common.Authorization = `Bearer ${token}`;
+            store.dispatch(login(token));
             store.dispatch(openSnackBar('Connexion réussi', 'success'));
           })
           .catch((error) => {
@@ -24,6 +26,18 @@ export default (store) => (next) => (action) => {
             console.log(error);
           });
       }
+      return next(action);
+
+    case REHYDRATE: {
+      const token = localStorage.getItem('jwtToken');
+      if (token) {
+        api.defaults.headers.common.Authorization = `Bearer ${token}`;
+        store.dispatch(login(token));
+      }
+      return next(action);
+    }
+    case LOGOUT:
+      localStorage.removeItem('jwtToken');
       return next(action);
 
     default:

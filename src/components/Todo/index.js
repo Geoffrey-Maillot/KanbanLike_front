@@ -1,5 +1,5 @@
 // Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // Import router
@@ -17,31 +17,37 @@ import ListModal from 'src/containers/ListModal';
 // Import style
 import './styles.scss';
 
-const Todo = ({ logged, theme, cardModalIsOpen, listModalIsOpen, signupIsOpen }) => (
-  <div className={`todo todo-${theme}`}>
-    <Header />
-    <Switch>
-      <Route exact path="/">
-        {!logged ? <Login /> : <Content />}
-      </Route>
-      {logged && (
-        <Route path="/filter/:filter">
-          <Content />
+const Todo = ({ logged, theme, cardModalIsOpen, listModalIsOpen, signupIsOpen, rehydrate }) => {
+  useEffect(() => {
+    rehydrate();
+  }, []);
+  return (
+    <div className={`todo todo-${theme}`}>
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          {!logged ? <Login /> : <Content />}
         </Route>
-      )}
+        {logged && (
+          <Route path="/filter/:filter">
+            <Content />
+          </Route>
+        )}
 
-      <Route>
-        <h1>404</h1>
-      </Route>
-    </Switch>
-    {signupIsOpen && <Signup />}
-    {cardModalIsOpen && <CardModal />}
-    {listModalIsOpen && <ListModal />}
-    <SnackBar />
-  </div>
-);
+        <Route>
+          <h1>404</h1>
+        </Route>
+      </Switch>
+      {signupIsOpen && <Signup />}
+      {cardModalIsOpen && <CardModal />}
+      {listModalIsOpen && <ListModal />}
+      <SnackBar />
+    </div>
+  );
+};
 
 Todo.propTypes = {
+  rehydrate: PropTypes.func.isRequired,
   signupIsOpen: PropTypes.bool.isRequired,
   cardModalIsOpen: PropTypes.bool.isRequired,
   listModalIsOpen: PropTypes.bool.isRequired,
