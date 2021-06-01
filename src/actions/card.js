@@ -1,5 +1,4 @@
-// actions CARD
-
+// actions list
 export const CREATE_NEW_CARD = 'CREATE_NEW_CARD';
 export const REMOVE_CARD = 'remove_card';
 export const SUBMIT_PATCH_CARD = 'SUBMIT_PATCH_CARD';
@@ -9,7 +8,6 @@ export const CHECK_CARD = 'CHECK_CARD';
 export const CHANGE_VALUE_CARD = 'CHANGE_VALUE_CARD';
 
 // action creator
-
 export const createNewCard = (id) => ({
   type: CREATE_NEW_CARD,
   id,

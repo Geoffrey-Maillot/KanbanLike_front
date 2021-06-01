@@ -1,9 +1,11 @@
+// Import react
 import React from 'react';
 import PropTypes from 'prop-types';
 
 // Import style
 import './styles.scss';
 
+// Component -->
 const Login = ({ email, password, onChange, onSubmit, openSignup, theme }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
@@ -54,6 +56,7 @@ const Login = ({ email, password, onChange, onSubmit, openSignup, theme }) => {
   );
 };
 
+// PropTypes -->
 Login.propTypes = {
   theme: PropTypes.string.isRequired,
   email: PropTypes.string,
@@ -68,4 +71,5 @@ Login.defaultProps = {
   password: '',
 };
 
+// Export -->
 export default Login;

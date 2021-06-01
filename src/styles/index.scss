@@ -2,6 +2,8 @@
 @use 'vars';
 
 body {
+  width: 100%;
+  min-height: 100vh;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   font-weight: 400;

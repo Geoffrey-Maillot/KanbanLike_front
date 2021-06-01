@@ -1,7 +1,13 @@
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
+
+// Import styles
 import './styles.scss';
 
+// Component -->
 const CardModal = ({ submitPatchCard, onChange, inputCardModal, openCloseCardModal, theme }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
@@ -38,6 +44,7 @@ const CardModal = ({ submitPatchCard, onChange, inputCardModal, openCloseCardMod
   );
 };
 
+// PropTypes -->
 CardModal.propTypes = {
   theme: PropTypes.string.isRequired,
   submitPatchCard: PropTypes.func.isRequired,
@@ -50,4 +57,5 @@ CardModal.defaultProps = {
   inputCardModal: '',
 };
 
+// Export -->
 export default CardModal;
