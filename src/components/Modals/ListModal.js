@@ -1,7 +1,13 @@
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
+
+// Import styles
 import './styles.scss';
 
+// Component -->
 const ListModal = ({ submitPatchList, onChange, inputListModal, openCloseListModal, theme }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
@@ -38,6 +44,7 @@ const ListModal = ({ submitPatchList, onChange, inputListModal, openCloseListMod
   );
 };
 
+// PropTypes -->
 ListModal.propTypes = {
   theme: PropTypes.string.isRequired,
   submitPatchList: PropTypes.func.isRequired,
@@ -50,4 +57,5 @@ ListModal.defaultProps = {
   inputListModal: '',
 };
 
+// Export -->
 export default ListModal;

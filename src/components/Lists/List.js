@@ -1,21 +1,24 @@
 /* eslint-disable no-param-reassign */
+// Import react
 import React, { useState } from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
+
+// Import npm
+import { ReactSortable } from 'react-sortablejs';
+
+// Import Component
+import Card from 'src/containers/Card';
 
 // Import icons
 import { HiOutlinePencil } from 'react-icons/hi';
 import { VscClose } from 'react-icons/vsc';
 
-// npm
-import { ReactSortable } from 'react-sortablejs';
-
-// Import Component
-import Card from 'src/containers/Card';
-import ListModal from 'src/containers/ListModal';
-
 // Import style
 import './styles.scss';
 
+// Component -->
 const List = ({
   theme,
   cards,
@@ -108,13 +111,14 @@ const List = ({
 
       <ReactSortable
         className="list-items"
-        tag="ul"
-        list={cards}
-        animation={200}
-        draggable=".container-list-items"
-        group=".list-items"
-        onSort={onEndDrag}
-        setList={setListCards}
+        tag="ul" // Par default l'élément crée est une div, tag indique quel type d'élément crée.
+        list={cards} // Le tableau a injecté dans ReactSortable
+        animation={200} // délai de l'animation
+        draggable=".container-list-items" // le nom de la classe de l'élément dragable
+        group=".list-items" // Le groupe dans lequel l'on peu déplacer les éléments
+        onSort={onEndDrag} // Méthode appellé a chaque action
+        setList={setListCards} // setList modifie le state avec un nouveau tableau-->
+        // -->à chaque déplacement d'une carte
       >
         {/* Card */}
         {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} listId={id} />)}
@@ -145,6 +149,7 @@ const List = ({
   );
 };
 
+// PropTypes -->
 List.propTypes = {
   theme: PropTypes.string.isRequired,
   filter: PropTypes.string,
@@ -172,4 +177,5 @@ List.defaultProps = {
   id: null,
 };
 
+// Export -->
 export default List;

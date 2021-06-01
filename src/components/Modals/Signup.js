@@ -1,9 +1,13 @@
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
 
 // Import style
 import './styles.scss';
 
+// Component -->
 const Signup = ({
   firstName,
   lastName,
@@ -75,6 +79,7 @@ const Signup = ({
   );
 };
 
+// PropTypes -->
 Signup.propTypes = {
   theme: PropTypes.string.isRequired,
   firstName: PropTypes.string,
@@ -93,4 +98,5 @@ Signup.defaultProps = {
   password: '',
 };
 
+// Export -->
 export default Signup;

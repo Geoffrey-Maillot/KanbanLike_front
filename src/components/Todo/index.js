@@ -1,5 +1,7 @@
-// Import npm
+// Import react
 import React, { useEffect } from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
 
 // Import router
@@ -13,10 +15,12 @@ import Signup from 'src/containers/Signup';
 import SnackBar from 'src/containers/SnackBar';
 import CardModal from 'src/containers/CardModal';
 import ListModal from 'src/containers/ListModal';
+import Error from 'src/containers/Error';
 
 // Import style
 import './styles.scss';
 
+// Component -->
 const Todo = ({ logged, theme, cardModalIsOpen, listModalIsOpen, signupIsOpen, rehydrate }) => {
   useEffect(() => {
     rehydrate();
@@ -35,7 +39,7 @@ const Todo = ({ logged, theme, cardModalIsOpen, listModalIsOpen, signupIsOpen, r
         )}
 
         <Route>
-          <h1>404</h1>
+          <Error />
         </Route>
       </Switch>
       {signupIsOpen && <Signup />}
@@ -46,6 +50,7 @@ const Todo = ({ logged, theme, cardModalIsOpen, listModalIsOpen, signupIsOpen, r
   );
 };
 
+// PropTypes -->
 Todo.propTypes = {
   rehydrate: PropTypes.func.isRequired,
   signupIsOpen: PropTypes.bool.isRequired,
@@ -55,4 +60,5 @@ Todo.propTypes = {
   theme: PropTypes.string.isRequired,
 };
 
+// Export -->
 export default Todo;

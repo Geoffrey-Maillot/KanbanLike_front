@@ -1,31 +1,22 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
+
+// Import npm
+import classNames from 'classnames';
 
 // Import icons
 import { HiOutlinePencil } from 'react-icons/hi';
 import { VscClose } from 'react-icons/vsc';
 
-// Import npm
-import classNames from 'classnames';
-
-// Import components
-import CardModal from 'src/containers/CardModal';
-
 // Import style
 import './styles.scss';
 
-const Card = ({
-  name,
-  id,
-  listId,
-  status,
-  removeCard,
-  openCloseCardModal,
-  checkCard,
-  theme,
-  isOpen,
-}) => {
+// Component -->
+const Card = ({ name, id, listId, status, removeCard, openCloseCardModal, checkCard, theme }) => {
   const handlerClickCheckedButton = () => {
     checkCard(status, id, listId);
   };
@@ -68,8 +59,8 @@ const Card = ({
   );
 };
 
+// PropTypes -->
 Card.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   theme: PropTypes.string.isRequired,
   name: PropTypes.string,
   id: PropTypes.number,
@@ -87,4 +78,5 @@ Card.defaultProps = {
   status: '',
 };
 
+// Export -->
 export default Card;

@@ -1,9 +1,14 @@
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
 
+// Import material-ui
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
+// Component -->
 const SnackBar = ({
   open, // Booléen
   handlerClose, // closeFunction
@@ -22,6 +27,7 @@ const SnackBar = ({
   </Snackbar>
 );
 
+// PropTypes -->
 SnackBar.propTypes = {
   open: PropTypes.bool.isRequired,
   handlerClose: PropTypes.func.isRequired,
@@ -29,4 +35,5 @@ SnackBar.propTypes = {
   typeColor: PropTypes.string.isRequired,
 };
 
+// Export -->
 export default SnackBar;
