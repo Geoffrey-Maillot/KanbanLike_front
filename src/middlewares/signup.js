@@ -26,8 +26,11 @@ export default (store) => (next) => (action) => {
             store.dispatch(openSnackBar('Inscription réussi', 'success'));
           })
           .catch((error) => {
-            store.dispatch(openSnackBar("une erreur s'est produite, veuillez réessayer", 'error'));
-            console.log(error);
+            console.log(error.response.data);
+            if (error.response.data) {
+              const { message } = error.response.data.error;
+              store.dispatch(openSnackBar(message, 'error'));
+            }
           });
       }
       return next(action);
