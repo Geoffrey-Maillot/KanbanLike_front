@@ -1,15 +1,19 @@
+// Import react
 import React, { useEffect, useState } from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
 
 // Import components
 import List from 'src/containers/List';
 
-// npm
+// Import npm
 import { ReactSortable } from 'react-sortablejs';
 
 // Import style
 import './styles.scss';
 
+// Component -->
 const Lists = ({
   fetchLists, // Méthode pour récupérer mes listes
   lists, // Tableau de listes
@@ -46,6 +50,7 @@ const Lists = ({
   );
 };
 
+// PropTypes -->
 Lists.propTypes = {
   savePositionList: PropTypes.func.isRequired,
   fetchLists: PropTypes.func.isRequired,
@@ -62,4 +67,5 @@ Lists.defaultProps = {
   filter: '',
 };
 
+// Export -->
 export default Lists;

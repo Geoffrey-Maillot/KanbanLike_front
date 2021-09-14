@@ -1,11 +1,16 @@
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
 
-// Import styless
-import './styles.scss';
-
+// Import Router
 import { NavLink } from 'react-router-dom';
 
+// Import styles
+import './styles.scss';
+
+// Component -->
 const Filter = ({ theme }) => (
   <div className={`list_filter list_filter-${theme}`}>
     <NavLink to="/" exact className="link" activeClassName="link-active">
@@ -20,8 +25,10 @@ const Filter = ({ theme }) => (
   </div>
 );
 
+// PropTypes -->
 Filter.propTypes = {
   theme: PropTypes.string.isRequired,
 };
 
+// Export -->
 export default Filter;

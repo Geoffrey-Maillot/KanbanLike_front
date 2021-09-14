@@ -22,8 +22,11 @@ export default (store) => (next) => (action) => {
             store.dispatch(openSnackBar('Connexion réussi', 'success'));
           })
           .catch((error) => {
-            store.dispatch(openSnackBar("Une erreur s'est produite, veuillez réessayer", 'error'));
-            console.log(error);
+            if (error.response.data) {
+              const { message } = error.response.data.error;
+              store.dispatch(openSnackBar(message, 'error'));
+              console.log(error.response.data);
+            }
           });
       }
       return next(action);

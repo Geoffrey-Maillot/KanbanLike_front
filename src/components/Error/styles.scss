@@ -1,0 +1,24 @@
+.error {
+  width: 100vw;
+  height: calc(100vh - 250px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &_text {
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7rem;
+    letter-spacing: 0.5em;
+    transform: translateX(20px);
+  }
+}
+
+.error_text-light {
+  color: black;
+}
+
+.error_text-dark {
+  color: #fff;
+}

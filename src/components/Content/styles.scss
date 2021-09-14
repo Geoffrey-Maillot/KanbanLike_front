@@ -36,4 +36,13 @@
     top: 11px;
     left: 15px;
   }
+
+  &_text {
+    text-align: center;
+    width: 100%;
+    color: vars.$DarkGrayishBlue;
+    position: absolute;
+    bottom: 7px;
+    font-weight: 700;
+  }
 }

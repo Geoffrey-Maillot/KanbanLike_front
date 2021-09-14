@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+// Import react
+import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
+
+// Import Router
+import { Link } from 'react-router-dom';
 
 // Import img
 import moon from 'src/assets/img/icon-moon.svg';
 import sun from 'src/assets/img/icon-sun.svg';
-
-import { Link } from 'react-router-dom';
 
 // Import icons
 import { FiLogOut } from 'react-icons/fi';
@@ -13,6 +17,7 @@ import { FiLogOut } from 'react-icons/fi';
 // Import style
 import './styles.scss';
 
+// Component -->
 const Header = ({ logged, logout, theme, changeTheme }) => {
   const handlerOnClick = () => {
     logout();
@@ -44,6 +49,7 @@ const Header = ({ logged, logout, theme, changeTheme }) => {
   );
 };
 
+// PropTypes -->
 Header.propTypes = {
   changeTheme: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
@@ -51,4 +57,5 @@ Header.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
+// Export -->
 export default Header;

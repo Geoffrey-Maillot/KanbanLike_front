@@ -1,18 +1,14 @@
+// Import react
 import React from 'react';
+
+// Import propTypes
 import PropTypes from 'prop-types';
+
+// Import styles
 import './styles.scss';
 
-import { Modal } from 'semantic-ui-react';
-
-const ListModal = ({
-  submitPatchList,
-  onChange,
-  inputListModal,
-  isOpen,
-  openCloseListModal,
-  listId,
-}) => {
-  console.log(listId);
+// Component -->
+const ListModal = ({ submitPatchList, onChange, inputListModal, openCloseListModal, theme }) => {
   const handlerOnSubmit = (evt) => {
     evt.preventDefault();
     submitPatchList();
@@ -48,6 +44,7 @@ const ListModal = ({
   );
 };
 
+// PropTypes -->
 ListModal.propTypes = {
   theme: PropTypes.string.isRequired,
   submitPatchList: PropTypes.func.isRequired,
@@ -60,4 +57,5 @@ ListModal.defaultProps = {
   inputListModal: '',
 };
 
+// Export -->
 export default ListModal;

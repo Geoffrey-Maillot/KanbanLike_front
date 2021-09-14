@@ -42,6 +42,7 @@ const Content = ({ inputList, onChange, onSubmit, theme }) => {
         </form>
       </span>
       <Filter />
+      <p className="content_text">Drag and Drop cards and lists</p>
     </div>
   );
 };
