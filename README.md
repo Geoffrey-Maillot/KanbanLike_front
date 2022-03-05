@@ -1,3 +1,3 @@
 # KanbanLike_front
 
-### View project on https://todo-app.xyz/
+### View project on https://kanbanlike.netlify.app/
