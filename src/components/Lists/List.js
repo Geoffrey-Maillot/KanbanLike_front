@@ -11,10 +11,6 @@ import { ReactSortable } from 'react-sortablejs';
 // Import Component
 import Card from 'src/containers/Card';
 
-// Import icons
-import { HiOutlinePencil } from 'react-icons/hi';
-import { VscClose } from 'react-icons/vsc';
-
 // Import style
 import './styles.scss';
 
@@ -40,6 +36,10 @@ const List = ({
     evt.preventDefault();
     evt.target[0].blur(); // Je retire le focus de l'input
     onSubmit(id);
+  };
+
+  const handlerOnDoubleClick = () => {
+    openCloseListModal(id);
   };
 
   // je modifie la variable filter...
@@ -90,7 +90,7 @@ const List = ({
         <span className="list_input-span">
           <input
             type="text"
-            className="list_input input-dark"
+            className={`list_input input-${theme}`}
             placeholder="Create a new todo..."
             name="inputCard"
             value={inputCard}
@@ -99,12 +99,10 @@ const List = ({
         </span>
       </form>
 
-      <div className="list_title liste_title-dark">
+      <div className={`list_title liste_title-${theme}`}>
         <div
           className="list_title"
-          onDoubleClick={() => {
-            openCloseListModal();
-          }}
+          onDoubleClick={handlerOnDoubleClick}
         >
           {name}
         </div>
@@ -119,7 +117,7 @@ const List = ({
         group=".list-items" // Le groupe dans lequel l'on peu déplacer les éléments
         onSort={onEndDrag} // Méthode appellé a chaque action
         setList={setListCards} // setList modifie le state avec un nouveau tableau-->
-        // -->à chaque déplacement d'une carte
+      // -->à chaque déplacement d'une carte
       >
         {/* Card */}
         {cards.length !== 0 && cards.map((card) => <Card key={card.id} {...card} listId={id} />)}

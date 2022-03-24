@@ -6,7 +6,9 @@ import { openCloseListModal, submitPatchList, changeValue } from 'src/actions/li
 const mapStateToProps = (state) => ({
   inputListModal: state.list.inputListModal,
   theme: state.utils.theme,
+  listId: state.list.listId,
 });
+
 
 const mapDispatchToProps = (dispatch) => ({
   onChange: (name, value) => dispatch(changeValue(name, value)),

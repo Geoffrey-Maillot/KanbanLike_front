@@ -73,6 +73,8 @@ export default (store) => (next) => (action) => {
       {
         const { id: userId } = store.getState().user;
         const { inputListModal: name } = store.getState().list;
+        const { listId } = action;
+        console.log(listId);
         api
           .patch(`/list/${listId}`, {
             userId,

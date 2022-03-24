@@ -33,8 +33,9 @@ export const removeListBdd = (id) => ({
   id,
 });
 
-export const submitPatchList = () => ({
+export const submitPatchList = (listId) => ({
   type: SUBMIT_PATCH_LIST,
+  listId,
 });
 
 export const openCloseListModal = (listId) => ({

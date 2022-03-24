@@ -29,7 +29,6 @@ export default (store) => (next) => (action) => {
         const { cards } = filteredLists[0];
         // et je l'envoie à ma fonction qui me calcule la position
         const position = maxPosition(cards);
-        console.log(position);
         api
           .post('/card', {
             name,
@@ -101,7 +100,8 @@ export default (store) => (next) => (action) => {
     case CHECK_CARD:
       {
         const { id: userId } = store.getState().user;
-        let { listId: list_id, status } = action;
+        const { listId: list_id } = action;
+        let { listId: status } = action;
         // Si une carte est marqué commme terminé, je la passe en cours,
         // sinon c'est qu'elle est en cours, je la passe en terminé
         if (status === 'done') {

@@ -41,9 +41,9 @@ export default (state = initialState, action = {}) => {
     case OPEN_CLOSE_LIST_MODAL:
       return {
         ...state,
-        listModalIsOpen: !state.listModalIsOpen,
         inputListModal: '',
         listId: action.listId,
+        listModalIsOpen: !state.listModalIsOpen,
       };
     case OPEN_CLOSE_CARD_MODAL:
       return {
