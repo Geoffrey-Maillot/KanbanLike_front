@@ -9,7 +9,6 @@ const mapStateToProps = (state) => ({
   listId: state.list.listId,
 });
 
-
 const mapDispatchToProps = (dispatch) => ({
   onChange: (name, value) => dispatch(changeValue(name, value)),
   submitPatchList: (listId) => dispatch(submitPatchList(listId)),
